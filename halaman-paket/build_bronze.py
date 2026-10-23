@@ -68,6 +68,9 @@ top = f'''<div class="ehc"><section class="ehc-hero solo">
     <div class="ehpk" style="margin-top:28px"><div class="grid">
 {chr(10).join(label(n, c) for n, c in cards)}
     </div></div>
+    <div class="ehc-ctas" style="justify-content:center;margin-top:28px">
+      <a class="ehc-btn wa" href="{wa("Assalamu'alaikum Elharamain Wisata, saya ingin tanya jadwal dan kursi paket Umroh Bronze.")}" target="_blank" rel="noopener">{WA_SVG} Tanya jadwal Bronze via WhatsApp</a>
+    </div>
     <p class="ehc-note">Harga dapat berubah mengikuti kebijakan Saudi dan kurs (asumsi maks. Rp 17.000/USD). Hotel dapat diganti dengan hotel setaraf bila penuh.</p>
   </div>
 </section></div>'''
@@ -107,6 +110,30 @@ for name, c in cards:
                   "offers": {"@type": "Offer", "price": price, "priceCurrency": "IDR", "availability": "https://schema.org/InStock",
                              "url": "https://elharamainwisata.com/umroh-bronze/#harga-bronze"}})
 ld = {"@context": "https://schema.org", "@graph": trips}
+# Rotator WA: semua link WhatsApp ke nomor pusat di halaman ini dialihkan ke salah satu nomor CS rotator
+# Click to Chat Pro (r_nums). Satu pengunjung tetap dapat CS yang sama (disimpan di localStorage).
+ROTATOR = ['6281214178056', '628132212344', '6285179988198', '6285843372026', '6281287292422']
+end += """
+<script data-no-optimize="1" data-no-defer="1" data-cfasync="false">
+(function(){
+  var PUSAT='%s', CADANGAN=%s, KEY='ehc_wa_cs';
+  function daftar(){var v=window.ht_ctc_chat_var||{},r=v.r_nums||[];return r.length?r:CADANGAN;}
+  function nomorCS(){
+    var n=daftar(),no=null;
+    try{no=localStorage.getItem(KEY);}catch(e){}
+    if(!no||n.indexOf(no)==-1){no=n[Math.floor(Math.random()*n.length)];try{localStorage.setItem(KEY,no);}catch(e){}}
+    return no;
+  }
+  function ganti(a){
+    if(!/whatsapp\\.com|wa\\.me/.test(a.href)) return;
+    if(!a.dataset.waAsli) a.dataset.waAsli=a.href;
+    a.href=a.dataset.waAsli.split(PUSAT).join(nomorCS());
+  }
+  function semua(){document.querySelectorAll('a[href*="'+PUSAT+'"]').forEach(ganti);}
+  document.addEventListener('click',function(e){if(!e.target.closest)return;var a=e.target.closest('a[href]');if(!a)return;if(a.dataset.waAsli||a.href.indexOf(PUSAT)!=-1)ganti(a);},true);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',semua);else semua();
+})();
+</script>""" % (PUSAT, json.dumps(ROTATOR))
 end += f'\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
 
 blk = lambda h: '<!-- wp:html -->\n' + h.strip() + '\n<!-- /wp:html -->'
