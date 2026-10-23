@@ -1,6 +1,6 @@
 """Calon pengganti beranda (page 10088, /beranda-baru/, berkata sandi). Beranda asli (page 7840) TIDAK diubah
-sampai pemilik bilang final. Struktur mengikuti ghufrantravel.com (pilihan pemilik): jadwal terdekat, legalitas,
-kelas paket, alasan percaya, dokumentasi, layanan lain, alur, testimoni, FAQ.
+sampai pemilik bilang final. Urutan bagian terinspirasi ghufrantravel.com (pilihan pemilik), tetapi semua kalimat ditulis sendiri
+dengan gaya Elharamain (pemilik minta kata-kata tidak sama dengan LP contoh).
 Jadwal & harga diambil dari kartu Januari + Ramadhan (paket musim dingin) di pattern 9996.
 Jalankan: python3 halaman-paket/build_beranda.py  → halaman-paket/halaman/beranda-baru.html"""
 import json, re
@@ -33,15 +33,15 @@ def baris(j):
     pesan = f"Assalamu'alaikum Elharamain Wisata, saya ingin tanya paket {j['nama']} keberangkatan {j['tgl']} {bulan} 2027."
     return f'''<div class="ehh-jr"><div class="ehh-dt"><b>{j['tgl']}</b><span>{j['bln'].upper()} 27</span></div>
       <div class="ehh-jx"><h3>Paket {j['nama']} · Makkah {j['makkah']} · Madinah {j['madinah']}</h3><p>{j['dur']} · {j['mk']}</p><p class="ehh-pr">mulai <b>{rp(j['harga'])}</b></p></div>
-      <a class="ehh-btn ghost" href="{wa(pesan)}" target="_blank" rel="noopener">{WA_SVG} Tanya tanggal ini</a></div>'''
+      <a class="ehh-btn ghost" href="{wa(pesan)}" target="_blank" rel="noopener">{WA_SVG} Tanya kursi</a></div>'''
 
 
 # --- kelas paket: harga mulai = kartu termurah di halaman paket itu ---
-KELAS = [('bronze', 'Paling hemat', 'Hotel bintang 5 dengan pendampingan yang sama lengkap.', 't1'),
-         ('silver', 'Direct Saudia', 'Hotel Anjum dekat Masjidil Haram, Al-Aqeeq di Madinah.', 't2'),
-         ('silver-12', 'Lebih lama', 'Silver & Gold 12 hari, ibadah tanpa terburu-buru.', 't3'),
-         ('platinum', 'Zamzam Tower', 'Marwa Rotana / Movenpick tepat di depan Masjidil Haram.', 't4'),
-         ('premium', 'Kelas tertinggi', 'Fairmont Makkah Clock Royal Tower bintang 5.', 't5')]
+KELAS = [('bronze', 'Harga terjangkau', 'Hotel Makkah bintang 5, cocok untuk umroh pertama.', 't1'),
+         ('silver', 'Saudia Airlines', 'Anjum di Makkah dan Al-Aqeeq di Madinah, keduanya bintang 5.', 't2'),
+         ('silver-12', '12 hari', 'Waktu ibadah lebih leluasa, tersedia kelas Silver dan Gold.', 't3'),
+         ('platinum', 'Zamzam Tower', 'Menginap di Marwa Rotana atau Movenpick, selangkah ke Masjidil Haram.', 't4'),
+         ('premium', 'Fairmont Makkah', 'Kenyamanan terbaik di Fairmont Makkah Clock Royal Tower.', 't5')]
 halaman = {p['key']: p for p in PAGES}
 
 
@@ -50,7 +50,7 @@ def kelas(key, badge, desc, t):
     murah = min(harga(c) for per, k, n, c in SEMUA if p['pilih'](k, n))
     return f'''<div class="ehh-tier {t}"><div class="ehh-th"><span>{badge}</span><h3>Umroh {p['nama']}</h3><i>★★★★★</i></div>
       <div class="ehh-tb"><small>mulai</small><b>{rp(murah)}</b><small>per orang · kamar berempat</small><p>{desc}</p>
-      <a class="ehh-btn pri" href="{SITE}{p['slug']}/">Lihat jadwal &amp; hotel</a></div></div>'''
+      <a class="ehh-btn pri" href="{SITE}{p['slug']}/">Lihat detail paket</a></div></div>'''
 
 
 IC = {  # ikon garis sederhana (stroke)
@@ -71,14 +71,14 @@ IC = {  # ikon garis sederhana (stroke)
 ikon = lambda n: f'<span class="ehh-ic"><svg viewBox="0 0 24 24">{IC[n]}</svg></span>'
 kartu = lambda i, judul, teks, extra='': f'<div class="ehh-card">{ikon(i)}<h3>{judul}</h3><p>{teks}</p>{extra}</div>'
 
-LAYANAN = [('pesawat', 'Umroh Musim Dingin', 'Keberangkatan Januari dan Ramadhan 2027, dari Bronze sampai Premium.', 'paket-umroh-musim-dingin/'),
-           ('bulan', "Umroh Ramadhan & I'tikaf", "Umroh di bulan Ramadhan, termasuk I'tikaf 17 hari di sepuluh malam terakhir.", 'paket-umroh-silver/'),
-           ('kalender', 'Umroh Syawal', 'Berangkat Maret 2027 setelah Lebaran, dengan Riyadh Air, Saudia, atau Garuda.', 'umroh-syawal/'),
-           ('peta', 'Umroh Plus Turki', 'Umroh digabung perjalanan wisata ke Turki.', 'umroh-plus-turki/'),
-           ('peta', 'Umroh Plus Dubai', 'Umroh digabung perjalanan wisata ke Dubai.', 'umroh-plus-dubai/'),
-           ('peta', 'Umroh Plus Mesir', 'Umroh digabung perjalanan wisata ke Mesir.', 'umroh-plus-mesir/'),
-           ('peta', 'Umroh Plus Aqsa', 'Umroh plus kunjungan ke Masjidil Aqsa.', 'umroh-plus-aqsa/'),
-           ('masjid', 'Haji Plus', 'Haji khusus resmi melalui PIHK Elharamain (SK Kemenag No. 846/2020).', 'haji/')]
+LAYANAN = [('pesawat', 'Umroh Musim Dingin', 'Pilihan paket Januari dan Ramadhan 2027 saat cuaca Tanah Suci sedang sejuk.', 'paket-umroh-musim-dingin/'),
+           ('bulan', "Umroh Ramadhan & I'tikaf", "Raih keutamaan Ramadhan di Tanah Suci, ada program I'tikaf 17 hari.", 'paket-umroh-silver/'),
+           ('kalender', 'Umroh Syawal', 'Umroh setelah Idul Fitri, keberangkatan Maret 2027.', 'umroh-syawal/'),
+           ('peta', 'Umroh Plus Turki', 'Ibadah umroh dilanjutkan wisata ke Turki.', 'umroh-plus-turki/'),
+           ('peta', 'Umroh Plus Dubai', 'Ibadah umroh dilanjutkan wisata ke Dubai.', 'umroh-plus-dubai/'),
+           ('peta', 'Umroh Plus Mesir', 'Ibadah umroh dilanjutkan wisata ke Mesir.', 'umroh-plus-mesir/'),
+           ('peta', 'Umroh Plus Aqsa', 'Ibadah umroh dilanjutkan ziarah ke Masjidil Aqsa.', 'umroh-plus-aqsa/'),
+           ('masjid', 'Haji Plus', 'Haji khusus dengan izin PIHK SK Kemenag No. 846/2020.', 'haji/')]
 
 USTADZ = [('12-5', 'Ust. Ahmad Shobirin, Lc., MA'), ('11-5', 'Ust. Dr. Muhammad Tahir, Lc., MA'),
           ('10-9', 'Ust. Didi Wibawa, Lc., MA'), ('9-9', 'Ust. Furqon Abdurrohman, Lc., MA'),
@@ -89,37 +89,37 @@ FOTO = [('umroh-syawal-gold-12-hari', "Pelataran Ka'bah · Maret 2026", 'big'), 
         ('umroh-syawal-silver-12-hari', 'Masjid Quba · Maret 2026', ''), ('umroh-syawal-bronze', "Ka'bah malam hari · Maret 2026", ''),
         ('umroh-syawal-platinum', "Keluarga jamaah di depan Ka'bah · Maret 2026", '')]
 
-ALUR = [('chat', 'Konsultasi', 'Ceritakan rencana Anda lewat WhatsApp atau datang ke kantor terdekat.'),
-        ('kalender', 'Amankan kursi', 'Pilih paket dan tanggal, DP Rp 6.000.000 per orang, lalu lengkapi dokumen bersama tim admin.'),
-        ('buku', 'Manasik', 'Manasik di hotel berbintang dan pembagian perlengkapan sebelum berangkat.'),
-        ('pesawat', 'Berangkat', 'Berkumpul di VIP Lounge Umroh Soekarno-Hatta bersama pembimbing.'),
-        ('masjid', 'Beribadah', 'Umroh hingga 3x dengan Audio Hajj, tahajjud bersama, dan kajian di Tanah Suci.'),
-        ('hati', 'Pulang', 'Air zamzam 5 liter, album foto, sertifikat umroh, dan oleh-oleh.')]
+ALUR = [('chat', 'Konsultasi', 'Hubungi tim kami lewat WhatsApp atau kunjungi kantor Elharamain terdekat.'),
+        ('kalender', 'Booking seat', 'Tentukan paket dan tanggal, bayar DP Rp 6.000.000, lalu serahkan dokumen ke admin.'),
+        ('buku', 'Manasik', 'Ikuti manasik di hotel berbintang sekaligus terima perlengkapan umroh.'),
+        ('pesawat', 'Berangkat', 'Rombongan berkumpul di VIP Lounge Umroh Soekarno-Hatta.'),
+        ('masjid', 'Beribadah', 'Umroh hingga 3 kali dengan Audio Hajj, dilengkapi tahajjud bersama dan kajian.'),
+        ('hati', 'Kembali ke tanah air', 'Jamaah pulang membawa zamzam 5 liter, album foto, sertifikat, dan oleh-oleh.')]
 
-FAQ = [('Apakah Elharamain Wisata resmi?', 'Ya. PT Dhiyaa El Haramain El Mubarakah memiliki izin PPIU SK Kemenag No. 63 Tahun 2020 dan PIHK No. 846 Tahun 2020, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.'),
-       ('Apa saja yang sudah termasuk dalam harga paket?', 'Tiket pesawat PP, visa dan asuransi, hotel bintang 5 sesuai paket dengan makan 3x sehari, perlengkapan umroh, manasik, VIP Lounge, bus, pembimbing dan mutawwif, umroh hingga 3x, city tour Thaif, bagasi 35 kg, air zamzam 5 liter, album foto, dan sertifikat.'),
-       ('Apa yang belum termasuk?', 'Pembuatan paspor, suntik meningitis dan polio, keperluan pribadi, kelebihan bagasi, serta penyesuaian biaya bila ada kebijakan baru dari kedua negara.'),
-       ('Berapa DP dan kapan pelunasan?', 'DP Rp 6.000.000 per jamaah untuk booking kursi. Pelunasan paling lambat 35 hari sebelum keberangkatan, hanya ke rekening atas nama PT Dhiyaa El Haramain El Mubarakah.'),
-       ('Harga yang tertulis untuk kamar apa?', 'Harga mulai adalah kamar berempat (quad). Harga kamar bertiga dan berdua tertulis di setiap paket.')]
+FAQ = [('Apakah Elharamain Wisata travel umroh resmi?', 'Ya. PT Dhiyaa El Haramain El Mubarakah memiliki izin PPIU SK Kemenag No. 63 Tahun 2020 dan PIHK No. 846 Tahun 2020, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.'),
+       ('Fasilitas apa saja yang didapat jamaah?', 'Tiket pesawat PP, visa dan asuransi, hotel bintang 5 sesuai paket dengan makan 3x sehari, perlengkapan umroh, manasik, VIP Lounge, bus, pembimbing dan mutawwif, umroh hingga 3x, city tour Thaif, bagasi 35 kg, air zamzam 5 liter, album foto, dan sertifikat.'),
+       ('Biaya apa yang tidak termasuk paket?', 'Pembuatan paspor, suntik meningitis dan polio, keperluan pribadi, kelebihan bagasi, serta penyesuaian biaya bila ada kebijakan baru dari kedua negara.'),
+       ('Berapa uang muka dan batas pelunasannya?', 'DP Rp 6.000.000 per jamaah untuk booking kursi. Pelunasan paling lambat 35 hari sebelum keberangkatan, hanya ke rekening atas nama PT Dhiyaa El Haramain El Mubarakah.'),
+       ('Harga paket berlaku untuk tipe kamar apa?', 'Harga "mulai" berlaku untuk kamar quad (berempat). Harga kamar triple dan double tercantum di setiap paket.')]
 
 hero = f'''<div class="ehc ehh"><section class="ehh-hero">
   <div class="ehc-wrap ehh-hero-in">
     <div class="ehh-hero-tx">
-      <span class="ehh-pill">Travel umroh &amp; haji resmi · PPIU Kemenag</span>
-      <h1>Umroh yang <em>nyaman dan berkesan</em>, dari manasik sampai pulang.</h1>
-      <p>Elharamain Wisata menemani setiap langkah ibadah Anda: manasik sebelum berangkat, pembimbing lulusan Timur Tengah yang mendampingi di Tanah Suci, dan harga yang ditulis terbuka sejak awal.</p>
+      <span class="ehh-pill">PT Dhiyaa El Haramain El Mubarakah · PPIU &amp; PIHK resmi</span>
+      <h1>Umroh dan Haji Plus yang <em>Nyaman dan Berkesan</em></h1>
+      <p>Hotel bintang 5, penerbangan langsung, kereta cepat Haramain, dan bimbingan ibadah sesuai sunnah bersama asatidz lulusan Timur Tengah. Elharamain Wisata hadir di Bekasi, Jakarta, Depok, Tangerang, Bogor, dan Bandung.</p>
       <div class="ehc-ctas">
-        <a class="ehh-btn wa" href="{wa("Assalamu'alaikum Elharamain Wisata, saya ingin konsultasi paket umroh.")}" target="_blank" rel="noopener">{WA_SVG} Konsultasi via WhatsApp</a>
-        <a class="ehh-btn glass" href="#jadwal">Lihat jadwal</a>
+        <a class="ehh-btn wa" href="{wa("Assalamu'alaikum Elharamain Wisata, saya ingin konsultasi paket umroh.")}" target="_blank" rel="noopener">{WA_SVG} Konsultasi Gratis</a>
+        <a class="ehh-btn glass" href="#jadwal">Cek jadwal keberangkatan</a>
       </div>
     </div>
     <div class="ehh-next">
-      <small>Keberangkatan terdekat</small>
+      <small>Berangkat paling dekat</small>
       <b>{pertama['tgl']} {BULAN[pertama['bln']][0]} 2027</b>
       <span>{pertama['dur']} · {pertama['mk']} · Paket {pertama['nama']}</span>
       <p>mulai <strong>{rp(pertama['harga'])}</strong></p>
       <span>per orang · kamar berempat</span>
-      <a class="ehh-btn wa" href="{wa(f"Assalamu'alaikum Elharamain Wisata, saya ingin daftar paket {pertama['nama']} keberangkatan {pertama['tgl']} {BULAN[pertama['bln']][0]} 2027.")}" target="_blank" rel="noopener">Pilih tanggal ini →</a>
+      <a class="ehh-btn wa" href="{wa(f"Assalamu'alaikum Elharamain Wisata, saya ingin daftar paket {pertama['nama']} keberangkatan {pertama['tgl']} {BULAN[pertama['bln']][0]} 2027.")}" target="_blank" rel="noopener">Daftar keberangkatan ini →</a>
     </div>
   </div>
   <div class="ehc-wrap"><div class="ehh-stat">
@@ -131,26 +131,26 @@ hero = f'''<div class="ehc ehh"><section class="ehh-hero">
 </section>
 <section class="ehh-sec ehh-pt0 ehh-up">
   <div class="ehc-wrap"><div class="ehh-g4">
-    {kartu('tameng', 'Izin resmi, bisa dicek', 'Izin PPIU SK Kemenag No. 63/2020 dan PIHK No. 846/2020 atas nama PT Dhiyaa El Haramain El Mubarakah.')}
-    {kartu('dok', 'Harga ditulis terbuka', 'Harga kamar berempat, bertiga, dan berdua tertulis di setiap paket, lengkap dengan yang termasuk dan belum.')}
-    {kartu('dompet', 'DP Rp 6.000.000/orang', 'Kunci kursi dengan DP, pelunasan paling lambat 35 hari sebelum berangkat.')}
-    {kartu('orang', 'Didampingi penuh', 'Manasik, pembimbing ibadah, dan mutawwif menemani dari berangkat sampai pulang.')}
+    {kartu('tameng', 'Berizin resmi Kemenag', 'Penyelenggara umroh (PPIU No. 63/2020) dan haji khusus (PIHK No. 846/2020).')}
+    {kartu('dok', 'Rincian harga lengkap', 'Harga kamar quad, triple, dan double tercantum di tiap paket beserta fasilitasnya.')}
+    {kartu('dompet', 'Booking seat Rp 6 juta', 'Cukup DP Rp 6.000.000 per jamaah, sisanya dilunasi H-35 sebelum keberangkatan.')}
+    {kartu('orang', 'Pembimbing sepanjang perjalanan', 'Asatidz dan mutawwif mendampingi jamaah sejak manasik hingga kembali ke tanah air.')}
   </div></div>
 </section>
 <section class="ehh-sec ehh-dark" id="jadwal">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Keberangkatan terdekat</span>
-    <h2>Jadwal umroh yang bisa Anda pilih</h2>
-    <p class="ehh-lead">Langsung dari daftar harga resmi kami. Harga per orang, kamar berempat.</p>
+    <span class="ehh-kick">Jadwal 2027</span>
+    <h2>Pilih tanggal keberangkatan Anda</h2>
+    <p class="ehh-lead">Harga per jamaah untuk kamar berempat, sesuai brosur resmi Elharamain Wisata.</p>
     {"".join(baris(j) for j in jadwal[:6])}
-    <a class="ehh-btn ghost" href="{SITE}paket-umroh-musim-dingin/" style="margin-top:8px">Semua jadwal keberangkatan ({len(jadwal)} tanggal)</a>
+    <a class="ehh-btn ghost" href="{SITE}paket-umroh-musim-dingin/" style="margin-top:8px">Lihat seluruh jadwal ({len(jadwal)} tanggal)</a>
   </div>
 </section>
 <section class="ehh-sec" id="legalitas">
   <div class="ehc-wrap">
     <span class="ehh-kick">Legalitas</span>
-    <h2>Resmi, terdaftar, dan bisa Anda datangi</h2>
-    <p class="ehh-lead">Sebelum memilih travel, cek izinnya. Ini data kami, silakan verifikasi.</p>
+    <h2>Legalitas Elharamain Wisata</h2>
+    <p class="ehh-lead">Elharamain Wisata adalah penyelenggara ibadah umroh dan haji khusus yang terdaftar di Kementerian Agama RI.</p>
     <div class="ehh-legal">
       <div><small>Badan usaha</small><b>PT Dhiyaa El Haramain El Mubarakah</b></div>
       <div><small>Izin PPIU (umroh)</small><b>SK Kemenag No. 63 Tahun 2020</b></div>
@@ -164,40 +164,40 @@ hero = f'''<div class="ehc ehh"><section class="ehh-hero">
 </section>
 <section class="ehh-sec ehh-soft" id="kelas">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Pilihan kelas</span>
-    <h2>Lima pilihan kelas hotel, satu standar pendampingan</h2>
-    <p class="ehh-lead">Semua kelas mendapat fasilitas inti yang sama: tiket, visa, asuransi, hotel bintang 5, makan 3x sehari, pembimbing, mutawwif, dan manasik.</p>
+    <span class="ehh-kick">Paket umroh</span>
+    <h2>Pilih kelas paket sesuai kebutuhan</h2>
+    <p class="ehh-lead">Setiap kelas sudah termasuk tiket, visa, asuransi, hotel bintang 5, makan 3x sehari, manasik, pembimbing, dan mutawwif. Bedanya ada pada hotel, durasi, dan maskapai.</p>
     <div class="ehh-tiers">{"".join(kelas(*k) for k in KELAS)}</div>
   </div>
 </section></div>'''
 
 tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Sebelum Anda membayar</span>
-    <h2>Menitipkan ibadah itu soal percaya.<br>Ini yang bisa Anda pegang.</h2>
+    <span class="ehh-kick">Kenapa Elharamain</span>
+    <h2>Kenapa memilih Elharamain Wisata?</h2>
     <div class="ehh-g3">
-      {kartu('tameng', 'Izin yang bisa dicek sendiri', 'PPIU SK Kemenag No. 63/2020 dan PIHK No. 846/2020 atas nama PT Dhiyaa El Haramain El Mubarakah, terakreditasi A oleh KAN.')}
-      {kartu('dok', 'Semua tertulis sebelum membayar', 'Rincian yang termasuk dan belum termasuk, ketentuan pembayaran, dan pembatalan dijelaskan sebelum Anda daftar.')}
-      {kartu('dompet', 'Rekening resmi atas nama perusahaan', 'Pembayaran hanya ke Bank Mandiri atau BSI atas nama PT Dhiyaa El Haramain El Mubarakah, bukan rekening pribadi.')}
-      {kartu('kalender', 'Jadwal bayar yang jelas', 'DP Rp 6.000.000 per orang untuk kunci kursi, pelunasan paling lambat 35 hari sebelum berangkat.')}
-      {kartu('tukar', 'Kalau rencana berubah', 'Pindah tanggal atau program bisa dilakukan paling lambat 40 hari sebelum keberangkatan.')}
-      {kartu('chat', 'Tanya dulu, tanpa tekanan', 'Konsultasi gratis lewat WhatsApp atau datang langsung ke salah satu dari 6 kantor kami.')}
+      {kartu('tameng', 'Terdaftar dan terakreditasi', 'Izin PPIU dan PIHK dari Kemenag, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.')}
+      {kartu('dok', 'Fasilitas dijelaskan di awal', 'Daftar fasilitas, biaya di luar paket, dan ketentuan pembatalan disampaikan sebelum pendaftaran.')}
+      {kartu('dompet', 'Satu nama rekening', 'Setoran hanya diterima di Bank Mandiri dan BSI atas nama PT Dhiyaa El Haramain El Mubarakah.')}
+      {kartu('kalender', 'Tahapan pembayaran ringan', 'Mulai dengan DP Rp 6.000.000, pelunasan paling lambat 35 hari sebelum keberangkatan.')}
+      {kartu('tukar', 'Bisa reschedule', 'Jadwal atau program dapat dipindah bila dikabarkan paling lambat 40 hari sebelum berangkat.')}
+      {kartu('chat', 'Konsultasi gratis', 'Tim kami siap menjawab lewat WhatsApp maupun di 6 kantor Elharamain Wisata.')}
     </div>
   </div>
 </section>
 <section class="ehh-sec" id="dokumentasi">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Dokumentasi asli kami</span>
-    <h2>Momen jamaah di Tanah Suci</h2>
-    <p class="ehh-lead">Foto dari perjalanan jamaah Elharamain Wisata sendiri, bukan foto stok.</p>
+    <span class="ehh-kick">Dokumentasi</span>
+    <h2>Dokumentasi jamaah Elharamain</h2>
+    <p class="ehh-lead">Rombongan umroh Syawal Elharamain Wisata di Makkah dan Madinah, Maret 2026.</p>
     <div class="ehh-mos">{"".join(f'<figure class="{k}"><img loading="lazy" src="{UP}2026/10/{f}-1024x640.jpg" alt="Jamaah Elharamain Wisata, {t}"><figcaption>{t}</figcaption></figure>' for f, t, k in FOTO)}</div>
   </div>
 </section>
 <section class="ehh-sec ehh-soft" id="layanan">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Layanan kami</span>
-    <h2>Satu pintu untuk perjalanan ibadah Anda</h2>
-    <div class="ehh-g4">{"".join(kartu(i, j, t, f'<a class="ehh-more" href="{SITE}{u}">Lihat selengkapnya →</a>') for i, j, t, u in LAYANAN)}</div>
+    <span class="ehh-kick">Program</span>
+    <h2>Program umroh &amp; haji Elharamain</h2>
+    <div class="ehh-g4">{"".join(kartu(i, j, t, f'<a class="ehh-more" href="{SITE}{u}">Selengkapnya →</a>') for i, j, t, u in LAYANAN)}</div>
   </div>
 </section>
 <section class="ehh-sec" id="pembimbing">
@@ -210,16 +210,16 @@ tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
 </section>
 <section class="ehh-sec ehh-dark" id="alur">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Perjalanan bersama kami</span>
-    <h2>Dari chat pertama sampai kembali ke rumah</h2>
+    <span class="ehh-kick">Cara mendaftar</span>
+    <h2>Langkah umroh bersama Elharamain Wisata</h2>
     <div class="ehh-g3">{"".join(f'<div class="ehh-card"><span class="ehh-no">0{n}</span>{ikon(i)}<h3>{j}</h3><p>{t}</p></div>' for n, (i, j, t) in enumerate(ALUR, 1))}</div>
   </div>
 </section></div>'''
 
 akhir = f'''<div class="ehc ehh"><section class="ehh-sec ehh-soft" id="faq">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Pertanyaan umum</span>
-    <h2>Yang biasanya ditanyakan sebelum berangkat</h2>
+    <span class="ehh-kick">FAQ</span>
+    <h2>Pertanyaan seputar umroh di Elharamain</h2>
     <div class="ehh-faq">{"".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)}</div>
   </div>
 </section></div>
