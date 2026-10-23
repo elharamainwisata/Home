@@ -14,6 +14,16 @@ Desain mengacu ke ghufrantravel.com, warna brand `#004AAD` / `#1684CF` / emas `#
 | Bogor | 9588 | /travel-umroh-bogor/ | 6282260126394 |
 | Bandung | 9589 | /travel-umroh-bandung/ | 628132212344 (11 digit, sudah dikonfirmasi pemilik) |
 
+## Halaman paket
+
+| Paket | Page ID | URL | Sumber |
+|---|---|---|---|
+| Bronze | 8869 | /umroh-bronze/ | `halaman-paket/build_bronze.py` → `halaman-paket/halaman/bronze.html` |
+
+Kartu harga Bronze diambil otomatis dari pattern 9996 (kartu bertag `bronze`), jadi harganya selalu sama dengan halaman kota.
+Setelah mengubah 9996, jalankan ulang `python3 halaman-paket/build_bronze.py` dan pasang ulang isi halaman 8869.
+Backup Elementor Bronze: `backup/2026-10-23_8869_bronze_elementor_sebelum.json` (rollback: `_elementor_edit_mode` = `builder`).
+
 ## Cara kerja
 
 Sejak 23 Okt 2026 keenam halaman **tidak lagi memakai Elementor**. Isinya blok WordPress (`wp:html`) ditambah

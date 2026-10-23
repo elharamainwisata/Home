@@ -26,3 +26,11 @@ paket Syawal ikut dimasukkan, dirapikan, dan **info paket serta lokasi jangan be
 - ~~Konfirmasi nomor WA Bandung~~: 0813-2212-344 (11 digit) sudah dikonfirmasi benar oleh pemilik.
 - Foto khusus kartu Syawal (sementara memakai foto kartu paket yang ada).
 - ~~Akses tulis repo GitHub~~: undangan diterima, repo `elharamainwisata/Home` sudah berisi file ini.
+
+## Lanjutan: halaman paket Bronze (8869)
+- Didesain ulang dengan pola yang sama: hero, angka singkat, 5 kartu Bronze (Des, Bronze Plus Des, Jan, Ramadhan, Syawal)
+  diambil dari pattern 9996, lalu pattern layanan/ketentuan/fasilitas/testimoni, dan tautan paket lain + kantor terdekat.
+  FAQ lama tidak dibawa karena semua isinya mengulang bagian lain. Schema TouristTrip per keberangkatan.
+- Pattern 9999 diperbaiki: urutan latar halaman kota sebelumnya ada dua bagian berurutan berwarna sama.
+- **Temuan penting:** Cloudinary `v6gwkqrb` membalas HTTP 401 `cloud_name v6gwkqrb is disabled` (23 Okt 2026, ±14:20 WIB).
+  Semua gambar Cloudinary di situs tidak tampil sampai akun diaktifkan lagi atau gambar dipindah ke Media WordPress.
