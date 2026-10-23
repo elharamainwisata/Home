@@ -15,13 +15,13 @@ css = re.search(r'<style>\n\.ehpk\{.*?</style>', harga, re.S).group(0)
 css = re.sub(r'#ehpk-t\d:checked[^\n]*\n', '', css)
 css = css.replace('.ehpk .grid{--gap:24px;--col:3;display:none;', '.ehpk .grid{--gap:24px;--col:3;display:flex;')
 grids = re.findall(r'<div class="grid g\d">(.*?)</div>\n', harga, re.S)
-periode = ['Desember 2026', 'Januari 2027', 'Ramadhan 2027', 'Syawal 2027']
+periode = ['Januari 2027', 'Ramadhan 2027', 'Syawal 2027']
 cards = []
 for name, g in zip(periode, grids):
     for c in re.findall(r'<a class="card" .*?</a>', g, re.S):
         if 'class="tag bronze"' in c:
             cards.append((name, c))
-assert len(cards) == 5, len(cards)
+assert len(cards) == 3, len(cards)
 
 
 def label(name, c):
@@ -38,7 +38,7 @@ top = f'''<div class="ehc"><section class="ehc-hero solo">
       <nav class="ehc-crumb" aria-label="Breadcrumb"><a href="https://elharamainwisata.com/">Beranda</a> › <a href="https://elharamainwisata.com/paket-umroh-musim-dingin/">Paket Umroh</a> › Bronze</nav>
       <span class="ehc-eyebrow">Paket paling hemat · hotel bintang 5</span>
       <h1>Paket Umroh <em>Bronze</em></h1>
-      <p>Umroh hemat tanpa turun kelas: hotel bintang 5 di Makkah dan Madinah, penerbangan langsung, ziarah Thaif, kereta cepat Haramain, dan bimbingan asatidz lulusan Timur Tengah. Tersedia keberangkatan Desember 2026 sampai Syawal 2027.</p>
+      <p>Umroh hemat tanpa turun kelas: hotel bintang 5 di Makkah dan Madinah, penerbangan langsung, ziarah Thaif, kereta cepat Haramain, dan bimbingan asatidz lulusan Timur Tengah. Tersedia keberangkatan Januari sampai Syawal 2027.</p>
       <div class="ehc-ctas">
         <a class="ehc-btn wa" href="{wa("Assalamu'alaikum Elharamain Wisata, saya ingin konsultasi paket Umroh Bronze.")}" target="_blank" rel="noopener">{WA_SVG} Konsultasi Gratis</a>
         <a class="ehc-btn ghost" href="#harga-bronze">Lihat jadwal &amp; harga</a>

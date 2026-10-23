@@ -50,3 +50,9 @@ paket Syawal ikut dimasukkan, dirapikan, dan **info paket serta lokasi jangan be
 - **Belum**: galeri "Momen bersama jamaah" dari Google Drive. Folder DOKUMENTASI hanya berisi video, folder "media" berisi
   materi iklan, file DSC besar gagal diunduh lewat konektor. Perlu nama folder foto dokumentasi dari pemilik.
   Galeri saat ini tetap memakai 11 foto lama dari Media WordPress (masih tampil).
+
+## Paket Desember 2026 habis (23 Okt 2026)
+- Tab Desember dihapus dari pattern 9996 (tinggal Januari, Ramadhan, Syawal; Januari jadi tab awal). Judul: "Januari – Syawal 2027".
+- Halaman Bronze: 2 kartu Desember dihapus (tinggal Januari, Ramadhan, Syawal) + schema TouristTrip ikut.
+- Slider hotel (9995): Prestige & Peninsula Worth dihapus karena hanya dipakai paket Desember.
+- priceRange schema 6 halaman kota: Rp 37.500.000 – Rp 71.000.000 (diganti per blok lewat page-sections.replace).

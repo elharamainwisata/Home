@@ -147,7 +147,7 @@ def end(city, o):
     faqs = [
      (f'Di mana kantor Elharamain Wisata di {city}?', f'{o["addr"]}. {"Ini kantor pusat kami. " if pusat else ""}WhatsApp: {fmt(o["phone"])}.'),
      ('Perlu janji dulu sebelum datang ke kantor?', 'Sebaiknya kabari kami lewat WhatsApp sebelum datang, supaya tim yang menangani paket Anda siap menyambut.'),
-     (f'Berapa biaya umroh dari {city}?', 'Mulai Rp 36.500.000 per jamaah (kamar quad) untuk keberangkatan Desember 2026. Harga sama di semua kantor dan tergantung paket, hotel, serta tanggal.'),
+     (f'Berapa biaya umroh dari {city}?', 'Mulai Rp 37.500.000 per jamaah (kamar quad) untuk keberangkatan Syawal 2027. Harga sama di semua kantor dan tergantung paket, hotel, serta tanggal.'),
      ('Ada paket umroh Syawal 2027?', 'Ada. Umroh Syawal berangkat 8–22 Maret 2027, mulai Rp 37.500.000 per jamaah (Bronze 10 hari, kamar quad). Tersedia juga Silver, Platinum, Silver 12 Hari, dan Gold 12 Hari dengan hotel bintang 5.'),
      (f'Jamaah {city} berangkat dari bandara mana?', f'Dari Bandara Soekarno-Hatta, berkumpul di VIP Lounge Umroh. Dari {o["short"]} {o["trip"]}, tergantung lalu lintas.'),
      ('Bagaimana sistem DP dan pelunasannya?', 'DP Rp 6.000.000 per jamaah, pelunasan paling lambat 35 hari sebelum berangkat. Pembayaran hanya sah ke rekening PT Dhiyaa El Haramain El Mubarakah.'),
@@ -160,7 +160,7 @@ def end(city, o):
       {"@type": "TravelAgency", "name": f"Elharamain Wisata {city}", "legalName": "PT Dhiyaa El Haramain El Mubarakah",
        "url": f"https://elharamainwisata.com/travel-umroh-{o['slug']}/",
        "logo": "https://elharamainwisata.com/wp-content/uploads/2025/03/Assets-LP-Haji-ONH-Plus-3-1.webp",
-       "telephone": '+' + intl(o['phone']), "address": addr, "areaServed": o['areas'], "priceRange": "Rp 36.500.000 - Rp 71.000.000"}]}
+       "telephone": '+' + intl(o['phone']), "address": addr, "areaServed": o['areas'], "priceRange": "Rp 37.500.000 - Rp 71.000.000"}]}
     return f'''<div class="ehc"><section class="ehc-sec alt" id="kantor-lain">
   <div class="ehc-wrap">
     <span class="ehc-eyebrow">Kantor lainnya</span>
