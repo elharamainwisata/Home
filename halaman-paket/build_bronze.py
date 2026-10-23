@@ -26,7 +26,9 @@ assert len(cards) == 3, len(cards)
 
 def label(name, c):
     # tampilkan periode keberangkatan di atas nama paket
-    return c.replace('<span class="tag bronze">', f'<span class="per">{name}</span><span class="tag bronze">', 1)
+    c = c.replace('<span class="tag bronze">', f'<span class="per">{name}</span><span class="tag bronze">', 1)
+    # tombol WhatsApp di tiap kartu (span, karena kartu sudah berupa link WA yang ikut dirotasi)
+    return c.replace('</p></div></a>', f'</p><span class="ehc-btn wa wa-kartu">{WA_SVG} Tanya via WhatsApp</span></div></a>', 1)
 
 
 wa = lambda t: f'https://api.whatsapp.com/send?phone={PUSAT}&text=' + up.quote(t, safe='')
@@ -63,14 +65,11 @@ top = f'''<div class="ehc"><section class="ehc-hero solo">
   <div class="ehc-wrap">
     <span class="ehc-eyebrow">Jadwal &amp; harga</span>
     <h2>Semua keberangkatan Bronze</h2>
-    <p class="ehc-lead">Harga per jamaah untuk kamar quad (ber-4). Harga kamar triple dan double ada di bawah setiap kartu. Klik kartu untuk tanya tanggal lewat WhatsApp.</p>
-    {css}<style>.ehpk .per{{display:block;font:700 11px Poppins,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}}</style>
+    <p class="ehc-lead">Harga per jamaah untuk kamar quad (ber-4). Harga kamar triple dan double ada di bawah setiap kartu. Tekan tombol WhatsApp di kartu untuk tanya tanggal dan sisa kursi.</p>
+    {css}<style>.ehpk .per{{display:block;font:700 11px Poppins,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}}.ehpk .wa-kartu{{margin-top:16px;width:100%}}</style>
     <div class="ehpk" style="margin-top:28px"><div class="grid">
 {chr(10).join(label(n, c) for n, c in cards)}
     </div></div>
-    <div class="ehc-ctas" style="justify-content:center;margin-top:28px">
-      <a class="ehc-btn wa" href="{wa("Assalamu'alaikum Elharamain Wisata, saya ingin tanya jadwal dan kursi paket Umroh Bronze.")}" target="_blank" rel="noopener">{WA_SVG} Tanya jadwal Bronze via WhatsApp</a>
-    </div>
     <p class="ehc-note">Harga dapat berubah mengikuti kebijakan Saudi dan kurs (asumsi maks. Rp 17.000/USD). Hotel dapat diganti dengan hotel setaraf bila penuh.</p>
   </div>
 </section></div>'''
