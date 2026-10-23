@@ -16,13 +16,26 @@ Desain mengacu ke ghufrantravel.com, warna brand `#004AAD` / `#1684CF` / emas `#
 
 ## Halaman paket
 
-| Paket | Page ID | URL | Sumber |
-|---|---|---|---|
-| Bronze | 8869 | /umroh-bronze/ | `halaman-paket/build_bronze.py` → `halaman-paket/halaman/bronze.html` |
+Semua halaman dibuat oleh `python3 halaman-paket/build_paket.py`, yang menulis `halaman-paket/halaman/<kunci>.html`.
 
-Kartu harga Bronze diambil otomatis dari pattern 9996 (kartu bertag `bronze`), jadi harganya selalu sama dengan halaman kota.
-Setelah mengubah 9996, jalankan ulang `python3 halaman-paket/build_bronze.py` dan pasang ulang isi halaman 8869.
-Backup Elementor Bronze: `backup/2026-10-23_8869_bronze_elementor_sebelum.json` (rollback: `_elementor_edit_mode` = `builder`).
+| Paket | Page ID | URL | Kartu yang diambil dari pattern 9996 |
+|---|---|---|---|
+| Bronze | 8869 | /umroh-bronze/ | tag `bronze` |
+| Silver | 8896 | /paket-umroh-silver/ | tag `silver` selain 12 Hari (termasuk I'tikaf 17 Hari) |
+| 12 Hari | 8910 | /umroh-silver-12-hari/ | Silver 12 Hari + Gold 12 Hari |
+| Platinum | 8908 | /umroh-platinum/ | tag `platinum` |
+| Premium | 8909 | /umroh-premium/ | tag `premium` |
+| Syawal | 9935 | /umroh-syawal/ | semua kartu tab Syawal |
+| Musim Dingin | 9581 | /paket-umroh-musim-dingin/ | semua kartu Januari + Ramadhan, dikelompokkan per periode |
+
+- **Harga**: setelah mengubah pattern 9996, jalankan ulang `build_paket.py`, lalu pasang ulang isi halaman paket yang berubah.
+- **Pattern 10076 "Paket: kartu & rotator WA"** (`halaman-paket/pattern/10076-kartu-rotator.html`): CSS kartu + script rotator WhatsApp.
+  - Rotator berisi 7 nomor kantor; nomor ganti di `ROTATOR` di `build_paket.py`, lalu update pattern 10076.
+  - Semua link WA ke nomor pusat dialihkan ke satu nomor CS. Nomor itu tetap per pengunjung (localStorage).
+  - Jangan pakai `&&` di script inline: wptexturize mengubahnya jadi `&#038;&#038;` dan script rusak.
+- **Tidak ada bagian "Paket lain & kantor"**: menu paket ada di header dan daftar kantor ada di footer (permintaan pemilik).
+- **Backup sebelum diganti** ada di `backup/2026-10-23_<id>_*`. Rollback Elementor: `_elementor_edit_mode` = `builder`.
+  Syawal (9935) dulunya blok khusus (itinerary, FAQ): `backup/2026-10-23_9935_syawal_rendered_sebelum.html` + revisi WordPress.
 
 ## Cara kerja
 

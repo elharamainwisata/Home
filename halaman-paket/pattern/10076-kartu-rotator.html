@@ -1,0 +1,61 @@
+<!-- wp:html -->
+<style>
+.ehpk{--ink:#1d2433;--muted:#5b6474;--line:#e6e8ee;--navy:#1f3553;font-family:Mulish,system-ui,sans-serif;color:var(--ink);line-height:1.5}
+.ehpk *{box-sizing:border-box}
+.ehpk .rb{position:absolute;opacity:0;pointer-events:none}
+.ehpk .tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 0 28px}
+.ehpk .tab{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:999px;padding:9px 18px;font:700 14px Poppins,sans-serif;line-height:1;cursor:pointer;user-select:none}
+.ehpk .tab em{font-style:normal;font-size:10px;background:#DBC033;color:#10213d;padding:2px 7px;border-radius:999px;text-transform:uppercase}
+.ehpk .grid{--gap:24px;--col:3;display:flex;flex-wrap:wrap;justify-content:center;gap:var(--gap)}
+.ehpk .grid>.card{width:calc((100% - (var(--col) - 1) * var(--gap)) / var(--col))}
+.ehpk .card{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;transition:box-shadow .2s,transform .2s}
+.ehpk .card:hover{box-shadow:0 12px 28px rgba(29,36,51,.12);transform:translateY(-3px)}
+.ehpk .img{aspect-ratio:7/5;background:#eef1f6}
+.ehpk .img img{width:100%;height:100%;object-fit:cover;display:block}
+.ehpk .body{padding:16px 16px 18px;display:flex;flex-direction:column;flex:1}
+.ehpk .tag{align-self:flex-start;color:#fff;font-weight:800;font-size:14px;padding:3px 26px 3px 12px;border-radius:4px 999px 999px 4px;background:linear-gradient(90deg,#1f3553,#5b7494)}
+.ehpk .tag.bronze{background:linear-gradient(90deg,#7a4a22,#b98150)}
+.ehpk .tag.silver{background:linear-gradient(90deg,#4f5d70,#95a3b5)}
+.ehpk .tag.gold{background:linear-gradient(90deg,#8c6812,#d0a534)}
+.ehpk .tag.premium{background:linear-gradient(90deg,#8e1b1b,#c0504d)}
+.ehpk .desc{margin:14px 0 16px;font-size:14px;color:var(--muted)}
+.ehpk .rows{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:14px;color:var(--muted)}
+.ehpk .rows li{display:flex;justify-content:space-between;gap:12px;margin:0}
+.ehpk .rows i{flex:none;font-style:normal;padding-left:24px;background:no-repeat left center/16px}
+.ehpk .rows span{text-align:right}
+.ehpk .rows .d{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6474' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M12 7v5l3 2'/%3E%3C/svg%3E")}
+.ehpk .rows .m{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6474' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.5 3.5 13 10h5.5a2 2 0 0 1 0 4H13l-2.5 6.5H8.5L10 14H6l-1.5 2H3l1-4-1-4h1.5L6 10h4L8.5 3.5z'/%3E%3C/svg%3E")}
+.ehpk .rows .k{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6474' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='3' width='16' height='18' rx='1'/%3E%3Cpath d='M8 7h2M14 7h2M8 11h2M14 11h2M10 21v-4h4v4'/%3E%3C/svg%3E")}
+.ehpk .rows .n{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6474' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 21h16M6 21v-7a6 6 0 0 1 12 0v7M12 8V3M10 21v-4h4v4'/%3E%3C/svg%3E")}
+.ehpk .rows .b{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6474' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='16' rx='2'/%3E%3Cpath d='M3 10h18M8 3v4M16 3v4'/%3E%3C/svg%3E")}
+.ehpk .foot{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-top:auto;padding-top:24px}
+.ehpk .foot small{font-size:12px;color:var(--muted)}
+.ehpk .foot b{font-size:16px;font-weight:800}
+.ehpk .kamar{margin:6px 0 0;font-size:12px;color:var(--muted);text-align:right}
+.ehpk .more{justify-content:center;align-items:center;text-align:center;padding:32px 24px;background:linear-gradient(160deg,#1f3553,#3b5578);color:#fff;border:0}
+.ehpk .more h3{font:700 22px Poppins,sans-serif;margin:0 0 8px;color:#fff}
+.ehpk .more p{margin:0 0 20px;font-size:14px;opacity:.85}
+.ehpk .more span{display:inline-block;background:#fff;color:var(--navy);font-weight:800;font-size:14px;padding:10px 20px;border-radius:999px}
+@media (max-width:900px){.ehpk .grid{--col:2;--gap:18px}}
+@media (max-width:600px){.ehpk .grid{--col:1}.ehpk .tabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:4px}.ehpk .tab{flex:none}}
+</style><style>.ehpk .per{display:block;font:700 11px Poppins,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}.ehpk .wa-kartu{margin-top:16px;width:100%}.ehpk-per{font:700 1.25rem Poppins,sans-serif;text-align:center;margin:36px 0 18px}</style>
+<script data-no-optimize="1" data-no-defer="1" data-cfasync="false">
+(function(){
+  var PUSAT='6281287292422', NOMOR=["6281287292422", "6281214178056", "6285179988198", "628132212344", "6285843372026", "6285693883208", "6282260126394"], KEY='ehc_wa_cs';
+  function nomorCS(){
+    var n=NOMOR,no=null;
+    try{no=localStorage.getItem(KEY);}catch(e){}
+    if(!no||n.indexOf(no)==-1){no=n[Math.floor(Math.random()*n.length)];try{localStorage.setItem(KEY,no);}catch(e){}}
+    return no;
+  }
+  function ganti(a){
+    if(!/whatsapp\.com|wa\.me/.test(a.href)) return;
+    if(!a.dataset.waAsli) a.dataset.waAsli=a.href;
+    a.href=a.dataset.waAsli.split(PUSAT).join(nomorCS());
+  }
+  function semua(){document.querySelectorAll('a[href*="'+PUSAT+'"]').forEach(ganti);}
+  document.addEventListener('click',function(e){if(!e.target.closest)return;var a=e.target.closest('a[href]');if(!a)return;if(a.dataset.waAsli||a.href.indexOf(PUSAT)!=-1)ganti(a);},true);
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',semua);else semua();
+})();
+</script>
+<!-- /wp:html -->
