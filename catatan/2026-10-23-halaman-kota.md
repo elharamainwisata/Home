@@ -58,3 +58,4 @@ paket Syawal ikut dimasukkan, dirapikan, dan **info paket serta lokasi jangan be
 - priceRange schema 6 halaman kota: Rp 37.500.000 – Rp 71.000.000 (diganti per blok lewat page-sections.replace).
 - **Belum**: deskripsi SEO Rank Math 6 kota + judul/deskripsi Bronze masih "Des 2026 ... Rp 36,5 juta".
   Meta Rank Math tidak terbuka lewat konektor (pages.update meta diabaikan tanpa error); harus diubah manual di kotak Rank Math wp-admin.
+- Galeri dokumentasi jadi 12 foto: + rombongan Bronze 21 Sept 2026 (manasik) dari Drive "KUMPULAN FOTO ALBUM" (akun elharamaindocument, dibaca lewat link publik karena konektor tak bisa melihat isi folder milik akun lain).
