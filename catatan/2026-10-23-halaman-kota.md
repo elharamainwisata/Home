@@ -56,3 +56,4 @@ paket Syawal ikut dimasukkan, dirapikan, dan **info paket serta lokasi jangan be
 - Halaman Bronze: 2 kartu Desember dihapus (tinggal Januari, Ramadhan, Syawal) + schema TouristTrip ikut.
 - Slider hotel (9995): Prestige & Peninsula Worth dihapus karena hanya dipakai paket Desember.
 - priceRange schema 6 halaman kota: Rp 37.500.000 – Rp 71.000.000 (diganti per blok lewat page-sections.replace).
+- Deskripsi SEO (Rank Math) 6 kota + judul/deskripsi Bronze diganti ke "Januari–Syawal 2027 mulai Rp 37,5 juta".
