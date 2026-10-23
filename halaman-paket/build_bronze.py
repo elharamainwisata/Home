@@ -109,16 +109,16 @@ for name, c in cards:
                   "offers": {"@type": "Offer", "price": price, "priceCurrency": "IDR", "availability": "https://schema.org/InStock",
                              "url": "https://elharamainwisata.com/umroh-bronze/#harga-bronze"}})
 ld = {"@context": "https://schema.org", "@graph": trips}
-# Rotator WA: semua link WhatsApp ke nomor pusat di halaman ini dialihkan ke salah satu nomor CS rotator
-# Click to Chat Pro (r_nums). Satu pengunjung tetap dapat CS yang sama (disimpan di localStorage).
-ROTATOR = ['6281214178056', '628132212344', '6285179988198', '6285843372026', '6281287292422']
+# Rotator WA: semua link WhatsApp ke nomor pusat di halaman ini dialihkan ke salah satu nomor CS kantor
+# (pilihan pemilik: 5 nomor Click to Chat + Tangerang & Bogor). Satu pengunjung tetap dapat CS yang sama (localStorage).
+ROTATOR = ['6281287292422', '6281214178056', '6285179988198', '628132212344', '6285843372026',
+           '6285693883208', '6282260126394']
 end += """
 <script data-no-optimize="1" data-no-defer="1" data-cfasync="false">
 (function(){
-  var PUSAT='%s', CADANGAN=%s, KEY='ehc_wa_cs';
-  function daftar(){var v=window.ht_ctc_chat_var||{},r=v.r_nums||[];return r.length?r:CADANGAN;}
+  var PUSAT='%s', NOMOR=%s, KEY='ehc_wa_cs';
   function nomorCS(){
-    var n=daftar(),no=null;
+    var n=NOMOR,no=null;
     try{no=localStorage.getItem(KEY);}catch(e){}
     if(!no||n.indexOf(no)==-1){no=n[Math.floor(Math.random()*n.length)];try{localStorage.setItem(KEY,no);}catch(e){}}
     return no;
