@@ -78,6 +78,21 @@ LAYANAN = [('pesawat', 'Umroh Januari 2027', 'Bronze sampai Premium, keberangkat
            ('masjid', "I'tikaf Ramadhan 17 Hari", "Sepuluh malam terakhir Ramadhan di Tanah Suci, keberangkatan 28 Februari 2027.", 'paket-umroh-silver/'),
            ('kalender', 'Umroh Syawal 2027', 'Lima pilihan paket setelah Idul Fitri, keberangkatan 8 sampai 22 Maret 2027.', 'umroh-syawal/')]
 
+# Paket Haji Plus 1448 H (estimasi keberangkatan 2027), sumber: halaman https://elharamainwisata.com/haji/
+HAJI = [('Silver', '', '12.000', '13.500', '15.000', '22–23 hari', 'Anjum ★5', 'Concorde ★4', 'Saudia / Qatar / Emirates'),
+        ('Gold', '', '15.500', '17.000', '18.500', '22–23 hari', 'Marwa Rotana ★5', 'Al-Aqeeq ★5', 'Saudia / Qatar / Emirates'),
+        ('Gold Arbain', 'Paling diminati', '17.000', '18.500', '20.000', '27–28 hari', 'Marwa Rotana ★5', 'Al-Aqeeq ★5', 'Saudia / Qatar / Emirates'),
+        ('Platinum', '', '20.000', '22.000', '24.000', '22–23 hari', 'Fairmont ★5', 'Movenpick ★5', 'Saudia / Garuda Indonesia')]
+
+
+def haji(nama, badge, quad, triple, double, durasi, makkah, madinah, maskapai):
+    pesan = f"Assalamu'alaikum Elharamain Wisata, saya ingin tanya Paket Haji Plus {nama}."
+    tag = f'<span class="ehh-badge">{badge}</span>' if badge else ''
+    return f'''<div class="ehh-card ehh-hj">{tag}<h3>Haji Plus {nama}</h3><small>mulai</small><b>{quad} USD</b><small>kamar quad · triple {triple} · double {double} USD</small>
+      <ul><li><span>Durasi</span>{durasi}</li><li><span>Hotel Makkah</span>{makkah}</li><li><span>Hotel Madinah</span>{madinah}</li><li><span>Maskapai</span>{maskapai}</li></ul>
+      <a class="ehh-btn pri" href="{wa(pesan)}" target="_blank" rel="noopener">{WA_SVG} Tanya paket</a></div>'''
+
+
 USTADZ = [('12-5', 'Ust. Ahmad Shobirin, Lc., MA'), ('11-5', 'Ust. Dr. Muhammad Tahir, Lc., MA'),
           ('10-9', 'Ust. Didi Wibawa, Lc., MA'), ('9-9', 'Ust. Furqon Abdurrohman, Lc., MA'),
           ('8-8', 'Ust. Ahmad Husain, Lc., M.Pd'), ('7-5', 'Ust. Idrus Abidin, Lc., MA'),
@@ -194,8 +209,12 @@ tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
 <section class="ehh-sec ehh-soft" id="layanan">
   <div class="ehc-wrap">
     <span class="ehh-kick">Program 2027</span>
-    <h2>Program umroh Elharamain Wisata</h2>
-    <div class="ehh-g4">{"".join(kartu(i, j, t, f'<a class="ehh-more" href="{SITE}{u}">Selengkapnya →</a>') for i, j, t, u in LAYANAN)}</div>
+    <h2>Program umroh &amp; Haji Plus Elharamain Wisata</h2>
+    <div class="ehh-tabs"><input type="radio" name="ehh-prog" id="ehp-u" checked><input type="radio" name="ehh-prog" id="ehp-h">
+    <div class="tl"><label for="ehp-u">Paket Umroh</label><label for="ehp-h">Paket Haji Plus</label></div>
+    <div class="ehh-g4 pn pu">{"".join(kartu(i, j, t, f'<a class="ehh-more" href="{SITE}{u}">Selengkapnya →</a>') for i, j, t, u in LAYANAN)}</div>
+    <div class="pn ph"><div class="ehh-g4">{"".join(haji(*h) for h in HAJI)}</div>
+    <p class="ehh-note">Setoran awal nomor porsi 4.000 USD untuk semua paket. Biaya adalah estimasi keberangkatan 2027 dan diinformasikan kembali 1 tahun sebelum berangkat (estimasi kenaikan 4–5% per tahun). <a href="{SITE}haji/">Lihat detail Haji Plus →</a></p></div></div>
   </div>
 </section>
 <section class="ehh-sec" id="pembimbing">
@@ -212,7 +231,24 @@ tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
     <h2>Langkah umroh bersama Elharamain Wisata</h2>
     <div class="ehh-g3">{"".join(f'<div class="ehh-card"><span class="ehh-no">0{n}</span>{ikon(i)}<h3>{j}</h3><p>{t}</p></div>' for n, (i, j, t) in enumerate(ALUR, 1))}</div>
   </div>
-</section></div>'''
+</section></div>
+<style>
+.ehh-tabs>input{{position:absolute;opacity:0;pointer-events:none}}
+.ehh-tabs .tl{{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}}
+.ehh-tabs .tl label{{border:1px solid var(--ln);background:#fff;color:var(--mu);border-radius:999px;padding:10px 20px;font:700 14px Poppins,sans-serif;cursor:pointer}}
+#ehp-u:checked~.tl label[for=ehp-u],#ehp-h:checked~.tl label[for=ehp-h]{{background:var(--bl);border-color:var(--bl);color:#fff}}
+.ehh-tabs .pn{{display:none}}
+#ehp-u:checked~.pu,#ehp-h:checked~.ph{{display:grid}}
+#ehp-h:checked~.ph{{display:block}}
+.ehh-hj{{position:relative}}
+.ehh-hj b{{display:block;font:700 24px Poppins,sans-serif;color:var(--nv)}}
+.ehh-hj small{{font-size:12px;color:var(--mu)}}
+.ehh-hj ul{{list-style:none;margin:14px 0 16px;padding:0;display:grid;gap:6px;font-size:13.5px}}
+.ehh-hj li{{display:flex;justify-content:space-between;gap:10px;color:var(--nv)}}
+.ehh-hj li span{{color:var(--mu)}}
+.ehh-hj .ehh-btn{{margin-top:auto;font-size:14px;padding:11px}}
+.ehh-badge{{position:absolute;top:-10px;right:16px;background:var(--gd);color:var(--nv);font:700 11px Poppins,sans-serif;padding:4px 10px;border-radius:999px}}
+</style>'''
 
 akhir = f'''<div class="ehc ehh"><section class="ehh-sec ehh-soft" id="faq">
   <div class="ehc-wrap">
