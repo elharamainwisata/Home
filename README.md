@@ -56,7 +56,7 @@ Header situs adalah template UAE `elementor-hf` 8556, isinya satu widget HTML (p
   Umroh Plus Aqsa/Mesir/Dubai/Turki dikeluarkan dari menu (halamannya tetap ada). Daftar lama: `backup/2026-10-23_8556_header_menu_paket_sebelum.html`.
 - Edit lewat API: `content-items.update` post_type `elementor-hf`, meta `_elementor_data`. ID elemen sekarang a0ead011/012/013.
 - **Cache elemen Elementor**: setelah update lewat API, HTML lama tetap tampil sampai cache dibersihkan
-  (wp-admin → Elementor → Tools → *Clear Files & Data*, atau buka template di Elementor lalu Update). Meta `_elementor_element_cache` tidak bisa dihapus lewat API.
+  (Clear Files & Data TIDAK cukup; yang berhasil: buka wp-admin/post.php?post=8556&action=elementor lalu klik Update). Meta `_elementor_element_cache` tidak bisa dihapus lewat API.
 
 ## Cara kerja
 
