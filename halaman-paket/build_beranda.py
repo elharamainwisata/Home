@@ -6,7 +6,7 @@ Jalankan: python3 halaman-paket/build_beranda.py  → halaman-paket/halaman/bera
 import json, re
 from build_paket import HERE, SITE, SEMUA, PAGES, wa, blk, ref
 
-WA_SVG = '<i class="ehh-wa"></i>'  # ikon WA lewat CSS mask, supaya isi halaman lebih ringan
+WA_SVG = '<i class="ehb-wa"></i>'  # ikon WA lewat CSS mask, supaya isi halaman lebih ringan
 
 UP = SITE + 'wp-content/uploads/'
 BULAN = {'Jan': ('Januari', 1), 'Feb': ('Februari', 2), 'Mar': ('Maret', 3)}
@@ -31,9 +31,9 @@ pertama = jadwal[0]
 def baris(j):
     bulan = BULAN[j['bln']][0]
     pesan = f"Assalamu'alaikum Elharamain Wisata, saya ingin tanya paket {j['nama']} keberangkatan {j['tgl']} {bulan} 2027."
-    return f'''<div class="ehh-jr"><div class="ehh-dt"><b>{j['tgl']}</b><span>{j['bln'].upper()} 27</span></div>
-      <div class="ehh-jx"><h3>Paket {j['nama']} · Makkah {j['makkah']} · Madinah {j['madinah']}</h3><p>{j['dur']} · {j['mk']}</p><p class="ehh-pr">mulai <b>{rp(j['harga'])}</b></p></div>
-      <a class="ehh-btn ghost" href="{wa(pesan)}" target="_blank" rel="noopener">{WA_SVG} Tanya kursi</a></div>'''
+    return f'''<div class="ehb-jr"><div class="ehb-dt"><b>{j['tgl']}</b><span>{j['bln'].upper()} 27</span></div>
+      <div class="ehb-jx"><h3>Paket {j['nama']} · Makkah {j['makkah']} · Madinah {j['madinah']}</h3><p>{j['dur']} · {j['mk']}</p><p class="ehb-pr">mulai <b>{rp(j['harga'])}</b></p></div>
+      <a class="ehb-btn ghost" href="{wa(pesan)}" target="_blank" rel="noopener">{WA_SVG} Tanya kursi</a></div>'''
 
 
 # --- kelas paket: harga mulai = kartu termurah di halaman paket itu ---
@@ -48,9 +48,9 @@ halaman = {p['key']: p for p in PAGES}
 def kelas(key, badge, desc, t):
     p = halaman[key]
     murah = min(harga(c) for per, k, n, c in SEMUA if p['pilih'](k, n))
-    return f'''<div class="ehh-tier {t}"><div class="ehh-th"><span>{badge}</span><h3>Umroh {p['nama']}</h3><i>★★★★★</i></div>
-      <div class="ehh-tb"><small>mulai</small><b>{rp(murah)}</b><small>per orang · kamar berempat</small><p>{desc}</p>
-      <a class="ehh-btn pri" href="{SITE}{p['slug']}/">Lihat detail paket</a></div></div>'''
+    return f'''<div class="ehb-tier {t}"><div class="ehb-th"><span>{badge}</span><h3>Umroh {p['nama']}</h3><i>★★★★★</i></div>
+      <div class="ehb-tb"><small>mulai</small><b>{rp(murah)}</b><small>per orang · kamar berempat</small><p>{desc}</p>
+      <a class="ehb-btn pri" href="{SITE}{p['slug']}/">Lihat detail paket</a></div></div>'''
 
 
 IC = {  # ikon garis sederhana (stroke)
@@ -69,8 +69,8 @@ IC = {  # ikon garis sederhana (stroke)
     'bintang': '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
     'peta': '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
 }
-ikon = lambda n: f'<span class="ehh-ic"><svg viewBox="0 0 24 24">{IC[n]}</svg></span>'
-kartu = lambda i, judul, teks, extra='': f'<div class="ehh-card">{ikon(i)}<h3>{judul}</h3><p>{teks}</p>{extra}</div>'
+ikon = lambda n: f'<span class="ehb-ic"><svg viewBox="0 0 24 24">{IC[n]}</svg></span>'
+kartu = lambda i, judul, teks, extra='': f'<div class="ehb-card">{ikon(i)}<h3>{judul}</h3><p>{teks}</p>{extra}</div>'
 
 # hanya program yang ada di brosur PDF (pemilik: "paket yang ada di pdf saja")
 LAYANAN = [('pesawat', 'Umroh Januari 2027', 'Bronze sampai Premium, keberangkatan 3 sampai 31 Januari 2027 bersama Saudia Airlines.', 'paket-umroh-musim-dingin/'),
@@ -87,10 +87,10 @@ HAJI = [('Silver', '', '12.000', '13.500', '15.000', '22–23 hari', 'Anjum ★5
 
 def haji(nama, badge, quad, triple, double, durasi, makkah, madinah, maskapai):
     pesan = f"Assalamu'alaikum Elharamain Wisata, saya ingin tanya Paket Haji Plus {nama}."
-    tag = f'<span class="ehh-badge">{badge}</span>' if badge else ''
-    return f'''<div class="ehh-card ehh-hj">{tag}<h3>Haji Plus {nama}</h3><small>mulai</small><b>{quad} USD</b><small>kamar quad · triple {triple} · double {double} USD</small>
+    tag = f'<span class="ehb-badge">{badge}</span>' if badge else ''
+    return f'''<div class="ehb-card ehb-hj">{tag}<h3>Haji Plus {nama}</h3><small>mulai</small><b>{quad} USD</b><small>kamar quad · triple {triple} · double {double} USD</small>
       <ul><li><span>Durasi</span>{durasi}</li><li><span>Hotel Makkah</span>{makkah}</li><li><span>Hotel Madinah</span>{madinah}</li><li><span>Maskapai</span>{maskapai}</li></ul>
-      <a class="ehh-btn pri" href="{wa(pesan)}" target="_blank" rel="noopener">{WA_SVG} Tanya paket</a></div>'''
+      <a class="ehb-btn pri" href="{wa(pesan)}" target="_blank" rel="noopener">{WA_SVG} Tanya paket</a></div>'''
 
 
 USTADZ = [('12-5', 'Ust. Ahmad Shobirin, Lc., MA'), ('11-5', 'Ust. Dr. Muhammad Tahir, Lc., MA'),
@@ -110,56 +110,56 @@ ALUR = [('chat', 'Konsultasi', 'Hubungi tim kami lewat WhatsApp atau kunjungi ka
         ('hati', 'Kembali ke tanah air', 'Jamaah pulang membawa zamzam 5 liter, album foto, sertifikat, dan oleh-oleh.')]
 
 
-hero = f'''<div class="ehc ehh"><section class="ehh-hero">
-  <div class="ehc-wrap ehh-hero-in">
-    <div class="ehh-hero-tx">
-      <span class="ehh-pill">PT Dhiyaa El Haramain El Mubarakah · PPIU &amp; PIHK resmi</span>
+hero = f'''<div class="ehc ehb"><section class="ehb-hero">
+  <div class="ehc-wrap ehb-hero-in">
+    <div class="ehb-hero-tx">
+      <span class="ehb-pill">PT Dhiyaa El Haramain El Mubarakah · PPIU &amp; PIHK resmi</span>
       <h1>Umroh dan Haji Plus yang <em>Nyaman dan Berkesan</em></h1>
       <p>Hotel bintang 5, penerbangan langsung, kereta cepat Haramain, dan bimbingan ibadah sesuai sunnah bersama asatidz lulusan Timur Tengah. Elharamain Wisata hadir di Bekasi, Jakarta, Depok, Tangerang, Bogor, dan Bandung.</p>
       <div class="ehc-ctas">
-        <a class="ehh-btn wa" href="{wa("Assalamu'alaikum Elharamain Wisata, saya ingin konsultasi paket umroh.")}" target="_blank" rel="noopener">{WA_SVG} Konsultasi Gratis</a>
-        <a class="ehh-btn glass" href="#jadwal">Cek jadwal keberangkatan</a>
+        <a class="ehb-btn wa" href="{wa("Assalamu'alaikum Elharamain Wisata, saya ingin konsultasi paket umroh.")}" target="_blank" rel="noopener">{WA_SVG} Konsultasi Gratis</a>
+        <a class="ehb-btn glass" href="#jadwal">Cek jadwal keberangkatan</a>
       </div>
     </div>
-    <div class="ehh-next">
+    <div class="ehb-next">
       <small>Berangkat paling dekat</small>
       <b>{pertama['tgl']} {BULAN[pertama['bln']][0]} 2027</b>
       <span>{pertama['dur']} · {pertama['mk']} · Paket {pertama['nama']}</span>
       <p>mulai <strong>{rp(pertama['harga'])}</strong></p>
       <span>per orang · kamar berempat</span>
-      <a class="ehh-btn wa" href="{wa(f"Assalamu'alaikum Elharamain Wisata, saya ingin daftar paket {pertama['nama']} keberangkatan {pertama['tgl']} {BULAN[pertama['bln']][0]} 2027.")}" target="_blank" rel="noopener">Daftar keberangkatan ini →</a>
+      <a class="ehb-btn wa" href="{wa(f"Assalamu'alaikum Elharamain Wisata, saya ingin daftar paket {pertama['nama']} keberangkatan {pertama['tgl']} {BULAN[pertama['bln']][0]} 2027.")}" target="_blank" rel="noopener">Daftar keberangkatan ini →</a>
     </div>
   </div>
-  <div class="ehc-wrap"><div class="ehh-stat">
+  <div class="ehc-wrap"><div class="ehb-stat">
     <div><b>6.800+</b><span>ulasan Google bintang 5</span></div>
     <div><b>6 kantor</b><span>Bekasi, Jakarta, Depok, Tangerang, Bogor, Bandung</span></div>
     <div><b>Akreditasi A</b><span>Komite Akreditasi Nasional</span></div>
     <div><b>IATA</b><span>Kode 15333220</span></div>
   </div></div>
 </section>
-<section class="ehh-sec ehh-pt0 ehh-up">
-  <div class="ehc-wrap"><div class="ehh-g4">
+<section class="ehb-sec ehb-pt0 ehb-up">
+  <div class="ehc-wrap"><div class="ehb-g4">
     {kartu('tameng', 'Berizin resmi Kemenag', 'Penyelenggara umroh (PPIU No. 63/2020) dan haji khusus (PIHK No. 846/2020).')}
     {kartu('dok', 'Rincian harga lengkap', 'Harga kamar quad, triple, dan double tercantum di tiap paket beserta fasilitasnya.')}
     {kartu('dompet', 'Booking seat Rp 6 juta', 'Cukup DP Rp 6.000.000 per jamaah, sisanya dilunasi H-35 sebelum keberangkatan.')}
     {kartu('orang', 'Pembimbing sepanjang perjalanan', 'Asatidz dan mutawwif mendampingi jamaah sejak manasik hingga kembali ke tanah air.')}
   </div></div>
 </section>
-<section class="ehh-sec ehh-dark" id="jadwal">
+<section class="ehb-sec ehb-dark" id="jadwal">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Jadwal 2027</span>
+    <span class="ehb-kick">Jadwal 2027</span>
     <h2>Pilih tanggal keberangkatan Anda</h2>
-    <p class="ehh-lead">Harga per jamaah untuk kamar berempat, sesuai brosur resmi Elharamain Wisata.</p>
+    <p class="ehb-lead">Harga per jamaah untuk kamar berempat, sesuai brosur resmi Elharamain Wisata.</p>
     {"".join(baris(j) for j in jadwal[:6])}
-    <a class="ehh-btn ghost" href="{SITE}paket-umroh-musim-dingin/" style="margin-top:8px">Lihat seluruh jadwal ({len(jadwal)} tanggal)</a>
+    <a class="ehb-btn ghost" href="{SITE}paket-umroh-musim-dingin/" style="margin-top:8px">Lihat seluruh jadwal ({len(jadwal)} tanggal)</a>
   </div>
 </section>
-<section class="ehh-sec" id="legalitas">
+<section class="ehb-sec" id="legalitas">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Legalitas</span>
+    <span class="ehb-kick">Legalitas</span>
     <h2>Legalitas Elharamain Wisata</h2>
-    <p class="ehh-lead">Elharamain Wisata adalah penyelenggara ibadah umroh dan haji khusus yang terdaftar di Kementerian Agama RI.</p>
-    <div class="ehh-legal">
+    <p class="ehb-lead">Elharamain Wisata adalah penyelenggara ibadah umroh dan haji khusus yang terdaftar di Kementerian Agama RI.</p>
+    <div class="ehb-legal">
       <div><small>Badan usaha</small><b>PT Dhiyaa El Haramain El Mubarakah</b></div>
       <div><small>Izin PPIU (umroh)</small><b>SK Kemenag No. 63 Tahun 2020</b></div>
       <div><small>Izin PIHK (haji khusus)</small><b>SK Kemenag No. 846 Tahun 2020</b></div>
@@ -167,23 +167,23 @@ hero = f'''<div class="ehc ehh"><section class="ehh-hero">
       <div><small>Akreditasi</small><b>A, Komite Akreditasi Nasional (KAN)</b></div>
       <div><small>Kantor</small><b>Bekasi (pusat) · Jakarta · Depok · Tangerang · Bogor · Bandung</b></div>
     </div>
-    <p class="ehh-note">Pembayaran hanya sah ke rekening atas nama PT Dhiyaa El Haramain El Mubarakah: Bank Mandiri 156.001.150.115.4 atau Bank BSI 710.857.755.4.</p>
+    <p class="ehb-note">Pembayaran hanya sah ke rekening atas nama PT Dhiyaa El Haramain El Mubarakah: Bank Mandiri 156.001.150.115.4 atau Bank BSI 710.857.755.4.</p>
   </div>
 </section>
-<section class="ehh-sec ehh-soft" id="kelas">
+<section class="ehb-sec ehb-soft" id="kelas">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Paket umroh</span>
+    <span class="ehb-kick">Paket umroh</span>
     <h2>Pilih kelas paket sesuai kebutuhan</h2>
-    <p class="ehh-lead">Setiap kelas sudah termasuk tiket, visa, asuransi, hotel bintang 5, makan 3x sehari, manasik, pembimbing, dan mutawwif. Bedanya ada pada hotel, durasi, dan maskapai.</p>
-    <div class="ehh-tiers">{"".join(kelas(*k) for k in KELAS)}</div>
+    <p class="ehb-lead">Setiap kelas sudah termasuk tiket, visa, asuransi, hotel bintang 5, makan 3x sehari, manasik, pembimbing, dan mutawwif. Bedanya ada pada hotel, durasi, dan maskapai.</p>
+    <div class="ehb-tiers">{"".join(kelas(*k) for k in KELAS)}</div>
   </div>
 </section></div>'''
 
-tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
+tengah = f'''<div class="ehc ehb"><section class="ehb-sec ehb-dark">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Kenapa Elharamain Wisata</span>
+    <span class="ehb-kick">Kenapa Elharamain Wisata</span>
     <h2>Kenapa memilih Elharamain Wisata?</h2>
-    <div class="ehh-g3">
+    <div class="ehb-g3">
       {kartu('tameng', 'Terdaftar dan terakreditasi', 'Izin PPIU dan PIHK dari Kemenag, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.')}
       {kartu('bintang', 'Fasilitas eksklusif', 'Hotel bintang 5, VIP Lounge Umroh, kereta cepat Haramain, perlengkapan eksklusif, hingga kuliner khas Arab Saudi.')}
       {kartu('dompet', 'Satu nama rekening', 'Setoran hanya diterima di Bank Mandiri dan BSI atas nama PT Dhiyaa El Haramain El Mubarakah.')}
@@ -193,151 +193,151 @@ tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
     </div>
   </div>
 </section>
-<section class="ehh-sec" id="dokumentasi">
+<section class="ehb-sec" id="dokumentasi">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Dokumentasi</span>
+    <span class="ehb-kick">Dokumentasi</span>
     <h2>Dokumentasi jamaah Elharamain Wisata</h2>
-    <p class="ehh-lead">Rombongan umroh Syawal Elharamain Wisata di Makkah dan Madinah, Maret 2026.</p>
-    <div class="ehh-mos">{"".join(f'<figure class="{k}"><img loading="lazy" src="{UP}2026/10/{f}-1024x640.jpg" alt="Jamaah Elharamain Wisata, {t}"><figcaption>{t}</figcaption></figure>' for f, t, k in FOTO)}</div>
+    <p class="ehb-lead">Rombongan umroh Syawal Elharamain Wisata di Makkah dan Madinah, Maret 2026.</p>
+    <div class="ehb-mos">{"".join(f'<figure class="{k}"><img loading="lazy" src="{UP}2026/10/{f}-1024x640.jpg" alt="Jamaah Elharamain Wisata, {t}"><figcaption>{t}</figcaption></figure>' for f, t, k in FOTO)}</div>
   </div>
 </section>
-<section class="ehh-sec ehh-soft" id="layanan">
+<section class="ehb-sec ehb-soft" id="layanan">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Program 2027</span>
+    <span class="ehb-kick">Program 2027</span>
     <h2>Program umroh &amp; Haji Plus Elharamain Wisata</h2>
-    <div class="ehh-tabs"><input type="radio" name="ehh-prog" id="ehp-u" checked><input type="radio" name="ehh-prog" id="ehp-h">
+    <div class="ehb-tabs"><input type="radio" name="ehb-prog" id="ehp-u" checked><input type="radio" name="ehb-prog" id="ehp-h">
     <div class="tl"><label for="ehp-u">Paket Umroh</label><label for="ehp-h">Paket Haji Plus</label></div>
-    <div class="ehh-g4 pn pu">{"".join(kartu(i, j, t, f'<a class="ehh-more" href="{SITE}{u}">Selengkapnya →</a>') for i, j, t, u in LAYANAN)}</div>
-    <div class="pn ph"><div class="ehh-g4">{"".join(haji(*h) for h in HAJI)}</div>
-    <p class="ehh-note">Setoran awal nomor porsi 4.000 USD untuk semua paket. Biaya adalah estimasi keberangkatan 2027 dan diinformasikan kembali 1 tahun sebelum berangkat (estimasi kenaikan 4–5% per tahun). <a href="{SITE}haji/">Lihat detail Haji Plus →</a></p></div></div>
+    <div class="ehb-g4 pn pu">{"".join(kartu(i, j, t, f'<a class="ehb-more" href="{SITE}{u}">Selengkapnya →</a>') for i, j, t, u in LAYANAN)}</div>
+    <div class="pn ph"><div class="ehb-g4">{"".join(haji(*h) for h in HAJI)}</div>
+    <p class="ehb-note">Setoran awal nomor porsi 4.000 USD untuk semua paket. Biaya adalah estimasi keberangkatan 2027 dan diinformasikan kembali 1 tahun sebelum berangkat (estimasi kenaikan 4–5% per tahun). <a href="{SITE}haji/">Lihat detail Haji Plus →</a></p></div></div>
   </div>
 </section>
-<section class="ehh-sec" id="pembimbing">
+<section class="ehb-sec" id="pembimbing">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Lulusan terbaik Timur Tengah</span>
+    <span class="ehb-kick">Lulusan terbaik Timur Tengah</span>
     <h2>Pembimbing ibadah umroh &amp; haji</h2>
-    <p class="ehh-lead">Ibadah dibimbing langsung oleh asatidz yang mendampingi jamaah dari manasik sampai pulang ke tanah air.</p>
-    <div class="ehh-ust">{"".join(f'<figure><img loading="lazy" src="{UP}2025/03/{f}.jpg" alt="{n}, pembimbing ibadah Elharamain Wisata"><figcaption>{n}</figcaption></figure>' for f, n in USTADZ)}</div>
+    <p class="ehb-lead">Ibadah dibimbing langsung oleh asatidz yang mendampingi jamaah dari manasik sampai pulang ke tanah air.</p>
+    <div class="ehb-ust">{"".join(f'<figure><img loading="lazy" src="{UP}2025/03/{f}.jpg" alt="{n}, pembimbing ibadah Elharamain Wisata"><figcaption>{n}</figcaption></figure>' for f, n in USTADZ)}</div>
   </div>
 </section>
-<section class="ehh-sec ehh-dark" id="alur">
+<section class="ehb-sec ehb-dark" id="alur">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Cara mendaftar</span>
+    <span class="ehb-kick">Cara mendaftar</span>
     <h2>Langkah umroh bersama Elharamain Wisata</h2>
-    <div class="ehh-g3">{"".join(f'<div class="ehh-card"><span class="ehh-no">0{n}</span>{ikon(i)}<h3>{j}</h3><p>{t}</p></div>' for n, (i, j, t) in enumerate(ALUR, 1))}</div>
+    <div class="ehb-g3">{"".join(f'<div class="ehb-card"><span class="ehb-no">0{n}</span>{ikon(i)}<h3>{j}</h3><p>{t}</p></div>' for n, (i, j, t) in enumerate(ALUR, 1))}</div>
   </div>
 </section></div>
 <style>
-.ehh-tabs>input{{position:absolute;opacity:0;pointer-events:none}}
-.ehh-tabs .tl{{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}}
-.ehh-tabs .tl label{{border:1px solid var(--ln);background:#fff;color:var(--mu);border-radius:999px;padding:10px 20px;font:700 14px Poppins,sans-serif;cursor:pointer}}
+.ehb-tabs>input{{position:absolute;opacity:0;pointer-events:none}}
+.ehb-tabs .tl{{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}}
+.ehb-tabs .tl label{{border:1px solid var(--ln);background:#fff;color:var(--mu);border-radius:999px;padding:10px 20px;font:700 14px Poppins,sans-serif;cursor:pointer}}
 #ehp-u:checked~.tl label[for=ehp-u],#ehp-h:checked~.tl label[for=ehp-h]{{background:var(--bl);border-color:var(--bl);color:#fff}}
-.ehh-tabs .pn{{display:none}}
+.ehb-tabs .pn{{display:none}}
 #ehp-u:checked~.pu,#ehp-h:checked~.ph{{display:grid}}
 #ehp-h:checked~.ph{{display:block}}
-.ehh-hj{{position:relative}}
-.ehh-hj b{{display:block;font:700 24px Poppins,sans-serif;color:var(--nv)}}
-.ehh-hj small{{font-size:12px;color:var(--mu)}}
-.ehh-hj ul{{list-style:none;margin:14px 0 16px;padding:0;display:grid;gap:6px;font-size:13.5px}}
-.ehh-hj li{{display:flex;justify-content:space-between;gap:10px;color:var(--nv)}}
-.ehh-hj li span{{color:var(--mu)}}
-.ehh-hj .ehh-btn{{margin-top:auto;font-size:14px;padding:11px}}
-.ehh-badge{{position:absolute;top:-10px;right:16px;background:var(--gd);color:var(--nv);font:700 11px Poppins,sans-serif;padding:4px 10px;border-radius:999px}}
+.ehb-hj{{position:relative}}
+.ehb-hj b{{display:block;font:700 24px Poppins,sans-serif;color:var(--nv)}}
+.ehb-hj small{{font-size:12px;color:var(--mu)}}
+.ehb-hj ul{{list-style:none;margin:14px 0 16px;padding:0;display:grid;gap:6px;font-size:13.5px}}
+.ehb-hj li{{display:flex;justify-content:space-between;gap:10px;color:var(--nv)}}
+.ehb-hj li span{{color:var(--mu)}}
+.ehb-hj .ehb-btn{{margin-top:auto;font-size:14px;padding:11px}}
+.ehb-badge{{position:absolute;top:-10px;right:16px;background:var(--gd);color:var(--nv);font:700 11px Poppins,sans-serif;padding:4px 10px;border-radius:999px}}
 </style>'''
 
 # FAQ sengaja tidak ada di home (permintaan pemilik)
 akhir = f'''<style>
-.ehh{{--nv:#10213d;--bl:#004AAD;--bl2:#1684CF;--gd:#DBC033;--ln:#e3e9f3;--mu:#55627a;--soft:#f4f7fc}}
-.ehh .ehh-sec{{padding:72px 0;background:#fff}}
-.ehh .ehh-soft{{background:var(--soft)}}
-.ehh .ehh-dark{{background:var(--bl);color:#fff}}
-.ehh .ehh-pt0{{padding-top:0}}
-.ehh .ehh-up .ehh-g4{{margin-top:-28px;position:relative}}
-.ehh .ehh-up .ehh-card{{box-shadow:0 10px 28px rgba(16,33,61,.08)}}
-.ehh h2{{font:700 clamp(26px,3.4vw,38px)/1.18 Poppins,sans-serif;margin:0 0 10px;color:var(--nv);letter-spacing:-.01em}}
-.ehh .ehh-dark h2,.ehh .ehh-dark h3{{color:#fff}}
-.ehh .ehh-kick{{display:block;font:700 12px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--bl);margin-bottom:8px}}
-.ehh .ehh-dark .ehh-kick{{color:var(--gd)}}
-.ehh .ehh-lead{{color:var(--mu);margin:0 0 28px;max-width:680px}}
-.ehh .ehh-dark .ehh-lead,.ehh .ehh-dark p{{color:rgba(255,255,255,.85)}}
-.ehh .ehh-note{{font-size:13px;color:var(--mu);margin:16px 0 0;max-width:760px}}
-.ehh-btn{{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font:600 15px Poppins,sans-serif;text-decoration:none!important;border:1px solid transparent;transition:transform .15s}}
-.ehh-btn:hover{{transform:translateY(-1px)}}
-.ehh-wa{{width:18px;height:18px;flex:none;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z'/%3E%3C/svg%3E") center/contain no-repeat}}
-.ehh-btn.wa{{background:#25D366;color:#fff!important}}
-.ehh-btn.pri{{background:var(--bl);color:#fff!important}}
-.ehh-btn.glass{{background:rgba(255,255,255,.1);color:#fff!important;border-color:rgba(255,255,255,.45)}}
-.ehh-btn.ghost{{background:#fff;color:var(--bl)!important;border-color:#fff}}
-.ehh-hero{{position:relative;color:#fff;padding:84px 0 40px;background:linear-gradient(100deg,rgba(16,33,61,.96) 0%,rgba(16,33,61,.85) 45%,rgba(0,74,173,.45) 100%),url({UP}2026/10/hero-jamaah-kabah.jpg) center/cover;}}
-.ehh-hero-in{{display:flex;gap:40px;align-items:flex-end;justify-content:space-between}}
-.ehh-hero-tx{{max-width:680px}}
-.ehh-pill{{display:inline-block;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:7px 14px;font:700 11px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}}
-.ehh-hero h1{{font:700 clamp(36px,5.4vw,62px)/1.06 Poppins,sans-serif;color:#fff;margin:0 0 18px;letter-spacing:-.02em}}
-.ehh-hero h1 em{{font-style:normal;color:var(--gd)}}
-.ehh-hero p{{color:rgba(255,255,255,.85);font-size:17px;margin:0 0 26px}}
-.ehh-next{{flex:none;width:300px;background:rgba(0,74,173,.88);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:22px;backdrop-filter:blur(6px)}}
-.ehh-next small{{display:block;font:700 11px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gd)}}
-.ehh-next b{{display:block;font:700 26px Poppins,sans-serif;margin:6px 0 2px}}
-.ehh-next span{{display:block;font-size:13px;color:rgba(255,255,255,.7)}}
-.ehh-next p{{margin:14px 0 0;font-size:14px}}
-.ehh-next strong{{font:700 26px Poppins,sans-serif;color:var(--gd)}}
-.ehh-next .ehh-btn{{width:100%;margin-top:16px}}
-.ehh-stat{{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border:1px solid rgba(255,255,255,.22);border-radius:16px;overflow:hidden}}
-.ehh-stat div{{padding:16px 20px;border-right:1px solid rgba(255,255,255,.22)}}
-.ehh-stat div:last-child{{border-right:0}}
-.ehh-stat b{{display:block;font:700 26px Poppins,sans-serif}}
-.ehh-stat span{{font-size:13px;color:rgba(255,255,255,.75)}}
-.ehh-g4{{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}}
-.ehh-g3{{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}}
-.ehh-card{{background:#fff;border:1px solid var(--ln);border-radius:16px;padding:22px;display:flex;flex-direction:column}}
-.ehh-dark .ehh-card{{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}}
-.ehh-card h3{{font:700 17px/1.35 Poppins,sans-serif;margin:0 0 6px}}
-.ehh-card h3{{color:var(--nv)}}
-.ehh-card p{{margin:0;font-size:14.5px;color:var(--mu)}}
-.ehh-ic{{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#e8eef9;color:var(--bl);margin-bottom:14px}}
-.ehh-dark .ehh-ic{{background:rgba(219,192,51,.2);color:var(--gd)}}
-.ehh-ic svg{{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}}
-.ehh-no{{font:700 13px Poppins,sans-serif;color:var(--gd);margin-bottom:8px}}
-.ehh-more{{margin-top:auto;padding-top:14px;font:600 14px Poppins,sans-serif;color:var(--bl)!important;text-decoration:none!important}}
-.ehh-jr{{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:16px 18px;margin-bottom:10px}}
-.ehh-dt{{flex:none;width:66px;height:66px;border-radius:12px;background:var(--gd);color:var(--nv);display:grid;place-items:center;align-content:center;line-height:1}}
-.ehh-dt b{{font:800 26px Poppins,sans-serif}}
-.ehh-dt span{{font:700 10.5px Poppins,sans-serif;letter-spacing:.08em;margin-top:4px}}
-.ehh-jx{{flex:1;min-width:0}}
-.ehh-jx h3{{font:600 15.5px/1.4 Poppins,sans-serif;margin:0 0 2px;color:#fff}}
-.ehh-jx p{{margin:0;font-size:13px}}
-.ehh-pr b{{font:700 19px Poppins,sans-serif;color:var(--gd)}}
-.ehh-jr .ehh-btn{{flex:none;font-size:14px;padding:10px 14px}}
-.ehh-legal{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}}
-.ehh-legal div{{border:1px solid var(--ln);border-radius:12px;padding:12px 14px;background:var(--soft)}}
-.ehh-legal small{{display:block;font-size:12px;color:var(--mu)}}
-.ehh-legal b{{font:600 15px Poppins,sans-serif;color:var(--nv)}}
-.ehh-tiers{{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}}
-.ehh-tier{{background:#fff;border:1px solid var(--ln);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}}
-.ehh-th{{padding:16px;color:#fff}}
-.ehh-th span{{display:inline-block;background:rgba(255,255,255,.2);border-radius:999px;padding:3px 10px;font:700 10.5px Poppins,sans-serif;letter-spacing:.05em;text-transform:uppercase}}
-.ehh-th h3{{font:700 19px/1.25 Poppins,sans-serif;margin:10px 0 2px;color:#fff}}
-.ehh-th i{{font-style:normal;font-size:12px;letter-spacing:2px;color:#ffe48a}}
-.t1 .ehh-th{{background:linear-gradient(135deg,#7a4a22,#b98150)}}.t2 .ehh-th{{background:linear-gradient(135deg,#4f5d70,#95a3b5)}}
-.t3 .ehh-th{{background:linear-gradient(135deg,#8c6812,#d0a534)}}.t4 .ehh-th{{background:linear-gradient(135deg,#004AAD,#1684CF)}}
-.t5 .ehh-th{{background:linear-gradient(135deg,#8e1b1b,#c0504d)}}
-.ehh-tb{{padding:16px;display:flex;flex-direction:column;flex:1}}
-.ehh-tb small{{font-size:12px;color:var(--mu)}}
-.ehh-tb b{{font:700 22px Poppins,sans-serif;color:var(--nv);white-space:nowrap}}
-.ehh-tb p{{font-size:13.5px;color:var(--mu);margin:10px 0 16px}}
-.ehh-tb .ehh-btn{{margin-top:auto;font-size:14px;padding:11px}}
-.ehh-mos{{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:10px}}
-.ehh-mos figure{{position:relative;margin:0;border-radius:16px;overflow:hidden}}
-.ehh-mos .big{{grid-row:span 2}}
-.ehh-mos img{{width:100%;height:100%;object-fit:cover;display:block}}
-.ehh-mos figcaption{{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 10px;font-size:12.5px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}}
-.ehh-ust{{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}}
-.ehh-ust figure{{margin:0;background:#fff;border:1px solid var(--ln);border-radius:14px;overflow:hidden;text-align:center}}
-.ehh-ust img{{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}}
-.ehh-ust figcaption{{padding:12px 10px;font:600 14px Poppins,sans-serif;color:var(--nv)}}
-@media (max-width:1060px){{.ehh-tiers{{grid-template-columns:repeat(3,1fr)}}.ehh-g4{{grid-template-columns:repeat(2,1fr)}}}}
-@media (max-width:900px){{.ehh-hero-in{{flex-direction:column;align-items:stretch}}.ehh-next{{width:auto}}.ehh-stat{{grid-template-columns:repeat(2,1fr)}}.ehh-stat div:nth-child(2){{border-right:0}}.ehh-stat div:nth-child(-n+2){{border-bottom:1px solid rgba(255,255,255,.22)}}.ehh-g3,.ehh-legal{{grid-template-columns:1fr 1fr}}.ehh-ust{{grid-template-columns:repeat(2,1fr)}}}}
-@media (max-width:640px){{.ehh .ehh-sec{{padding:52px 0}}.ehh-hero{{padding:48px 0 32px}}.ehh-g4,.ehh-g3,.ehh-legal,.ehh-tiers{{grid-template-columns:1fr}}.ehh-jr{{flex-wrap:wrap}}.ehh-jr .ehh-btn{{width:100%}}.ehh-mos{{grid-template-columns:1fr 1fr;grid-auto-rows:140px}}.ehh-mos .big{{grid-column:span 2;grid-row:span 1;height:220px}}.ehh-hero .ehc-ctas .ehh-btn{{width:100%}}}}
+.ehb{{--nv:#10213d;--bl:#004AAD;--bl2:#1684CF;--gd:#DBC033;--ln:#e3e9f3;--mu:#55627a;--soft:#f4f7fc}}
+.ehb .ehb-sec{{padding:72px 0;background:#fff}}
+.ehb .ehb-soft{{background:var(--soft)}}
+.ehb .ehb-dark{{background:var(--bl);color:#fff}}
+.ehb .ehb-pt0{{padding-top:0}}
+.ehb .ehb-up .ehb-g4{{margin-top:-28px;position:relative}}
+.ehb .ehb-up .ehb-card{{box-shadow:0 10px 28px rgba(16,33,61,.08)}}
+.ehb h2{{font:700 clamp(26px,3.4vw,38px)/1.18 Poppins,sans-serif;margin:0 0 10px;color:var(--nv);letter-spacing:-.01em}}
+.ehb .ehb-dark h2,.ehb .ehb-dark h3{{color:#fff}}
+.ehb .ehb-kick{{display:block;font:700 12px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--bl);margin-bottom:8px}}
+.ehb .ehb-dark .ehb-kick{{color:var(--gd)}}
+.ehb .ehb-lead{{color:var(--mu);margin:0 0 28px;max-width:680px}}
+.ehb .ehb-dark .ehb-lead,.ehb .ehb-dark p{{color:rgba(255,255,255,.85)}}
+.ehb .ehb-note{{font-size:13px;color:var(--mu);margin:16px 0 0;max-width:760px}}
+.ehb-btn{{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 20px;border-radius:12px;font:600 15px Poppins,sans-serif;text-decoration:none!important;border:1px solid transparent;transition:transform .15s}}
+.ehb-btn:hover{{transform:translateY(-1px)}}
+.ehb-wa{{width:18px;height:18px;flex:none;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.1.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.4Z'/%3E%3C/svg%3E") center/contain no-repeat}}
+.ehb-btn.wa{{background:#25D366;color:#fff!important}}
+.ehb-btn.pri{{background:var(--bl);color:#fff!important}}
+.ehb-btn.glass{{background:rgba(255,255,255,.1);color:#fff!important;border-color:rgba(255,255,255,.45)}}
+.ehb-btn.ghost{{background:#fff;color:var(--bl)!important;border-color:#fff}}
+.ehb-hero{{position:relative;color:#fff;padding:84px 0 40px;background:linear-gradient(100deg,rgba(16,33,61,.96) 0%,rgba(16,33,61,.85) 45%,rgba(0,74,173,.45) 100%),url({UP}2026/10/hero-jamaah-kabah.jpg) center/cover;}}
+.ehb-hero-in{{display:flex;gap:40px;align-items:flex-end;justify-content:space-between}}
+.ehb-hero-tx{{max-width:680px}}
+.ehb-pill{{display:inline-block;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:7px 14px;font:700 11px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}}
+.ehb-hero h1{{font:700 clamp(36px,5.4vw,62px)/1.06 Poppins,sans-serif;color:#fff;margin:0 0 18px;letter-spacing:-.02em}}
+.ehb-hero h1 em{{font-style:normal;color:var(--gd)}}
+.ehb-hero p{{color:rgba(255,255,255,.85);font-size:17px;margin:0 0 26px}}
+.ehb-next{{flex:none;width:300px;background:rgba(0,74,173,.88);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:22px;backdrop-filter:blur(6px)}}
+.ehb-next small{{display:block;font:700 11px Poppins,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--gd)}}
+.ehb-next b{{display:block;font:700 26px Poppins,sans-serif;margin:6px 0 2px}}
+.ehb-next span{{display:block;font-size:13px;color:rgba(255,255,255,.7)}}
+.ehb-next p{{margin:14px 0 0;font-size:14px}}
+.ehb-next strong{{font:700 26px Poppins,sans-serif;color:var(--gd)}}
+.ehb-next .ehb-btn{{width:100%;margin-top:16px}}
+.ehb-stat{{display:grid;grid-template-columns:repeat(4,1fr);margin-top:44px;border:1px solid rgba(255,255,255,.22);border-radius:16px;overflow:hidden}}
+.ehb-stat div{{padding:16px 20px;border-right:1px solid rgba(255,255,255,.22)}}
+.ehb-stat div:last-child{{border-right:0}}
+.ehb-stat b{{display:block;font:700 26px Poppins,sans-serif}}
+.ehb-stat span{{font-size:13px;color:rgba(255,255,255,.75)}}
+.ehb-g4{{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}}
+.ehb-g3{{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}}
+.ehb-card{{background:#fff;border:1px solid var(--ln);border-radius:16px;padding:22px;display:flex;flex-direction:column}}
+.ehb-dark .ehb-card{{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}}
+.ehb-card h3{{font:700 17px/1.35 Poppins,sans-serif;margin:0 0 6px}}
+.ehb-card h3{{color:var(--nv)}}
+.ehb-card p{{margin:0;font-size:14.5px;color:var(--mu)}}
+.ehb-ic{{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#e8eef9;color:var(--bl);margin-bottom:14px}}
+.ehb-dark .ehb-ic{{background:rgba(219,192,51,.2);color:var(--gd)}}
+.ehb-ic svg{{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}}
+.ehb-no{{font:700 13px Poppins,sans-serif;color:var(--gd);margin-bottom:8px}}
+.ehb-more{{margin-top:auto;padding-top:14px;font:600 14px Poppins,sans-serif;color:var(--bl)!important;text-decoration:none!important}}
+.ehb-jr{{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:16px 18px;margin-bottom:10px}}
+.ehb-dt{{flex:none;width:66px;height:66px;border-radius:12px;background:var(--gd);color:var(--nv);display:grid;place-items:center;align-content:center;line-height:1}}
+.ehb-dt b{{font:800 26px Poppins,sans-serif}}
+.ehb-dt span{{font:700 10.5px Poppins,sans-serif;letter-spacing:.08em;margin-top:4px}}
+.ehb-jx{{flex:1;min-width:0}}
+.ehb-jx h3{{font:600 15.5px/1.4 Poppins,sans-serif;margin:0 0 2px;color:#fff}}
+.ehb-jx p{{margin:0;font-size:13px}}
+.ehb-pr b{{font:700 19px Poppins,sans-serif;color:var(--gd)}}
+.ehb-jr .ehb-btn{{flex:none;font-size:14px;padding:10px 14px}}
+.ehb-legal{{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}}
+.ehb-legal div{{border:1px solid var(--ln);border-radius:12px;padding:12px 14px;background:var(--soft)}}
+.ehb-legal small{{display:block;font-size:12px;color:var(--mu)}}
+.ehb-legal b{{font:600 15px Poppins,sans-serif;color:var(--nv)}}
+.ehb-tiers{{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}}
+.ehb-tier{{background:#fff;border:1px solid var(--ln);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}}
+.ehb-th{{padding:16px;color:#fff}}
+.ehb-th span{{display:inline-block;background:rgba(255,255,255,.2);border-radius:999px;padding:3px 10px;font:700 10.5px Poppins,sans-serif;letter-spacing:.05em;text-transform:uppercase}}
+.ehb-th h3{{font:700 19px/1.25 Poppins,sans-serif;margin:10px 0 2px;color:#fff}}
+.ehb-th i{{font-style:normal;font-size:12px;letter-spacing:2px;color:#ffe48a}}
+.t1 .ehb-th{{background:linear-gradient(135deg,#7a4a22,#b98150)}}.t2 .ehb-th{{background:linear-gradient(135deg,#4f5d70,#95a3b5)}}
+.t3 .ehb-th{{background:linear-gradient(135deg,#8c6812,#d0a534)}}.t4 .ehb-th{{background:linear-gradient(135deg,#004AAD,#1684CF)}}
+.t5 .ehb-th{{background:linear-gradient(135deg,#8e1b1b,#c0504d)}}
+.ehb-tb{{padding:16px;display:flex;flex-direction:column;flex:1}}
+.ehb-tb small{{font-size:12px;color:var(--mu)}}
+.ehb-tb b{{font:700 22px Poppins,sans-serif;color:var(--nv);white-space:nowrap}}
+.ehb-tb p{{font-size:13.5px;color:var(--mu);margin:10px 0 16px}}
+.ehb-tb .ehb-btn{{margin-top:auto;font-size:14px;padding:11px}}
+.ehb-mos{{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:220px;gap:10px}}
+.ehb-mos figure{{position:relative;margin:0;border-radius:16px;overflow:hidden}}
+.ehb-mos .big{{grid-row:span 2}}
+.ehb-mos img{{width:100%;height:100%;object-fit:cover;display:block}}
+.ehb-mos figcaption{{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 10px;font-size:12.5px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.6))}}
+.ehb-ust{{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}}
+.ehb-ust figure{{margin:0;background:#fff;border:1px solid var(--ln);border-radius:14px;overflow:hidden;text-align:center}}
+.ehb-ust img{{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}}
+.ehb-ust figcaption{{padding:12px 10px;font:600 14px Poppins,sans-serif;color:var(--nv)}}
+@media (max-width:1060px){{.ehb-tiers{{grid-template-columns:repeat(3,1fr)}}.ehb-g4{{grid-template-columns:repeat(2,1fr)}}}}
+@media (max-width:900px){{.ehb-hero-in{{flex-direction:column;align-items:stretch}}.ehb-next{{width:auto}}.ehb-stat{{grid-template-columns:repeat(2,1fr)}}.ehb-stat div:nth-child(2){{border-right:0}}.ehb-stat div:nth-child(-n+2){{border-bottom:1px solid rgba(255,255,255,.22)}}.ehb-g3,.ehb-legal{{grid-template-columns:1fr 1fr}}.ehb-ust{{grid-template-columns:repeat(2,1fr)}}}}
+@media (max-width:640px){{.ehb .ehb-sec{{padding:52px 0}}.ehb-hero{{padding:48px 0 32px}}.ehb-g4,.ehb-g3,.ehb-legal,.ehb-tiers{{grid-template-columns:1fr}}.ehb-jr{{flex-wrap:wrap}}.ehb-jr .ehb-btn{{width:100%}}.ehb-mos{{grid-template-columns:1fr 1fr;grid-auto-rows:140px}}.ehb-mos .big{{grid-column:span 2;grid-row:span 1;height:220px}}.ehb-hero .ehc-ctas .ehb-btn{{width:100%}}}}
 </style>'''
 
 assert '&&' not in hero + tengah + akhir

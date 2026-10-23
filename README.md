@@ -45,6 +45,7 @@ Dibuat oleh `python3 halaman-paket/build_beranda.py` → `halaman-paket/halaman/
 - Isi: pattern 9991, 9999, 10076 + blok hero/jadwal/legalitas/kelas, blok kenapa/dokumentasi/program (tab Umroh & Haji Plus)/pembimbing/alur, testimoni 9994, blok CSS.
 - Jadwal & harga kelas diambil dari kartu Musim Dingin (pattern 9996); program hanya paket di brosur PDF; Haji Plus dari /haji/.
 - Ubah beranda hanya bila pemilik memintanya secara eksplisit.
+- Prefix class beranda `ehb-`. **Jangan pakai `ehh`**: itu milik header UAE (`header.ehh` dengan `z-index:999`); kalau dipakai ulang, konten menutupi dropdown menu.
 - Backup Elementor lama: `backup/2026-10-23_7840_home_elementor_sebelum.json` + `backup/2026-10-23_7840_home_post_content_sebelum.html`.
   Rollback: meta `_elementor_edit_mode` = `builder` pada page 7840.
 
