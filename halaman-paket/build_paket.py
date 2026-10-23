@@ -47,7 +47,7 @@ PAGES = [
          pilih=lambda k, n: k == 'platinum'),
     dict(key='premium', id=8909, slug='umroh-premium', nama='Premium', h1='Paket Umroh <em>Premium</em>',
          eyebrow='Kelas tertinggi · Fairmont Makkah',
-         intro="Umroh paling nyaman bersama Elharamain: hotel Fairmont Makkah Clock Royal Tower bintang 5 di depan Masjidil Haram, terbang langsung dengan Saudia Airlines, ziarah Thaif dan kereta cepat Haramain. Paket Ramadhan sudah termasuk golf car untuk umroh dan sa'i.",
+         intro="Umroh paling nyaman bersama Elharamain Wisata: hotel Fairmont Makkah Clock Royal Tower bintang 5 di depan Masjidil Haram, terbang langsung dengan Saudia Airlines, ziarah Thaif dan kereta cepat Haramain. Paket Ramadhan sudah termasuk golf car untuk umroh dan sa'i.",
          pilih=lambda k, n: k == 'premium'),
     dict(key='syawal', id=9935, slug='umroh-syawal', nama='Syawal', h1='Paket Umroh <em>Syawal 2027</em>',
          eyebrow='Berangkat Maret 2027 · setelah Lebaran',
@@ -136,7 +136,7 @@ def bangun(p):
     </div>
   </div>
 </section>
-<section class="ehc-stats" aria-label="Sekilas Elharamain">
+<section class="ehc-stats" aria-label="Sekilas Elharamain Wisata">
   <div class="ehc-wrap">
     <div class="ehc-stat"><b>6.800+</b><span>ulasan Google bintang 5</span></div>
     <div class="ehc-stat"><b>6 kantor</b><span>Bekasi, Jakarta, Depok, Tangerang, Bogor, Bandung</span></div>

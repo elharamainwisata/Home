@@ -66,19 +66,17 @@ IC = {  # ikon garis sederhana (stroke)
     'masjid': '<path d="M4 21h16M6 21v-7a6 6 0 0 1 12 0v7M12 8V3M10 21v-4h4v4"/>',
     'buku': '<path d="M4 5c3-1 6-1 8 1 2-2 5-2 8-1v14c-3-1-6-1-8 1-2-2-5-2-8-1z"/><path d="M12 6v14"/>',
     'hati': '<path d="M12 20s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.5-7 10-7 10z"/>',
+    'bintang': '<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
     'peta': '<path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
 }
 ikon = lambda n: f'<span class="ehh-ic"><svg viewBox="0 0 24 24">{IC[n]}</svg></span>'
 kartu = lambda i, judul, teks, extra='': f'<div class="ehh-card">{ikon(i)}<h3>{judul}</h3><p>{teks}</p>{extra}</div>'
 
-LAYANAN = [('pesawat', 'Umroh Musim Dingin', 'Pilihan paket Januari dan Ramadhan 2027 saat cuaca Tanah Suci sedang sejuk.', 'paket-umroh-musim-dingin/'),
-           ('bulan', "Umroh Ramadhan & I'tikaf", "Raih keutamaan Ramadhan di Tanah Suci, ada program I'tikaf 17 hari.", 'paket-umroh-silver/'),
-           ('kalender', 'Umroh Syawal', 'Umroh setelah Idul Fitri, keberangkatan Maret 2027.', 'umroh-syawal/'),
-           ('peta', 'Umroh Plus Turki', 'Ibadah umroh dilanjutkan wisata ke Turki.', 'umroh-plus-turki/'),
-           ('peta', 'Umroh Plus Dubai', 'Ibadah umroh dilanjutkan wisata ke Dubai.', 'umroh-plus-dubai/'),
-           ('peta', 'Umroh Plus Mesir', 'Ibadah umroh dilanjutkan wisata ke Mesir.', 'umroh-plus-mesir/'),
-           ('peta', 'Umroh Plus Aqsa', 'Ibadah umroh dilanjutkan ziarah ke Masjidil Aqsa.', 'umroh-plus-aqsa/'),
-           ('masjid', 'Haji Plus', 'Haji khusus dengan izin PIHK SK Kemenag No. 846/2020.', 'haji/')]
+# hanya program yang ada di brosur PDF (pemilik: "paket yang ada di pdf saja")
+LAYANAN = [('pesawat', 'Umroh Januari 2027', 'Bronze sampai Premium, keberangkatan 3 sampai 31 Januari 2027 bersama Saudia Airlines.', 'paket-umroh-musim-dingin/'),
+           ('bulan', 'Umroh Ramadhan 2027', 'Bronze, Platinum, dan Premium, keberangkatan 8 sampai 21 Februari 2027.', 'paket-umroh-musim-dingin/'),
+           ('masjid', "I'tikaf Ramadhan 17 Hari", "Sepuluh malam terakhir Ramadhan di Tanah Suci, keberangkatan 28 Februari 2027.", 'paket-umroh-silver/'),
+           ('kalender', 'Umroh Syawal 2027', 'Lima pilihan paket setelah Idul Fitri, keberangkatan 8 sampai 22 Maret 2027.', 'umroh-syawal/')]
 
 USTADZ = [('12-5', 'Ust. Ahmad Shobirin, Lc., MA'), ('11-5', 'Ust. Dr. Muhammad Tahir, Lc., MA'),
           ('10-9', 'Ust. Didi Wibawa, Lc., MA'), ('9-9', 'Ust. Furqon Abdurrohman, Lc., MA'),
@@ -89,7 +87,7 @@ FOTO = [('umroh-syawal-gold-12-hari', "Pelataran Ka'bah · Maret 2026", 'big'), 
         ('umroh-syawal-silver-12-hari', 'Masjid Quba · Maret 2026', ''), ('umroh-syawal-bronze', "Ka'bah malam hari · Maret 2026", ''),
         ('umroh-syawal-platinum', "Keluarga jamaah di depan Ka'bah · Maret 2026", '')]
 
-ALUR = [('chat', 'Konsultasi', 'Hubungi tim kami lewat WhatsApp atau kunjungi kantor Elharamain terdekat.'),
+ALUR = [('chat', 'Konsultasi', 'Hubungi tim kami lewat WhatsApp atau kunjungi kantor Elharamain Wisata terdekat.'),
         ('kalender', 'Booking seat', 'Tentukan paket dan tanggal, bayar DP Rp 6.000.000, lalu serahkan dokumen ke admin.'),
         ('buku', 'Manasik', 'Ikuti manasik di hotel berbintang sekaligus terima perlengkapan umroh.'),
         ('pesawat', 'Berangkat', 'Rombongan berkumpul di VIP Lounge Umroh Soekarno-Hatta.'),
@@ -173,11 +171,11 @@ hero = f'''<div class="ehc ehh"><section class="ehh-hero">
 
 tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Kenapa Elharamain</span>
+    <span class="ehh-kick">Kenapa Elharamain Wisata</span>
     <h2>Kenapa memilih Elharamain Wisata?</h2>
     <div class="ehh-g3">
       {kartu('tameng', 'Terdaftar dan terakreditasi', 'Izin PPIU dan PIHK dari Kemenag, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.')}
-      {kartu('dok', 'Fasilitas dijelaskan di awal', 'Daftar fasilitas, biaya di luar paket, dan ketentuan pembatalan disampaikan sebelum pendaftaran.')}
+      {kartu('bintang', 'Fasilitas eksklusif', 'Hotel bintang 5, VIP Lounge Umroh, kereta cepat Haramain, perlengkapan eksklusif, hingga kuliner khas Arab Saudi.')}
       {kartu('dompet', 'Satu nama rekening', 'Setoran hanya diterima di Bank Mandiri dan BSI atas nama PT Dhiyaa El Haramain El Mubarakah.')}
       {kartu('kalender', 'Tahapan pembayaran ringan', 'Mulai dengan DP Rp 6.000.000, pelunasan paling lambat 35 hari sebelum keberangkatan.')}
       {kartu('tukar', 'Bisa reschedule', 'Jadwal atau program dapat dipindah bila dikabarkan paling lambat 40 hari sebelum berangkat.')}
@@ -188,15 +186,15 @@ tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
 <section class="ehh-sec" id="dokumentasi">
   <div class="ehc-wrap">
     <span class="ehh-kick">Dokumentasi</span>
-    <h2>Dokumentasi jamaah Elharamain</h2>
+    <h2>Dokumentasi jamaah Elharamain Wisata</h2>
     <p class="ehh-lead">Rombongan umroh Syawal Elharamain Wisata di Makkah dan Madinah, Maret 2026.</p>
     <div class="ehh-mos">{"".join(f'<figure class="{k}"><img loading="lazy" src="{UP}2026/10/{f}-1024x640.jpg" alt="Jamaah Elharamain Wisata, {t}"><figcaption>{t}</figcaption></figure>' for f, t, k in FOTO)}</div>
   </div>
 </section>
 <section class="ehh-sec ehh-soft" id="layanan">
   <div class="ehc-wrap">
-    <span class="ehh-kick">Program</span>
-    <h2>Program umroh &amp; haji Elharamain</h2>
+    <span class="ehh-kick">Program 2027</span>
+    <h2>Program umroh Elharamain Wisata</h2>
     <div class="ehh-g4">{"".join(kartu(i, j, t, f'<a class="ehh-more" href="{SITE}{u}">Selengkapnya →</a>') for i, j, t, u in LAYANAN)}</div>
   </div>
 </section>
@@ -219,7 +217,7 @@ tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
 akhir = f'''<div class="ehc ehh"><section class="ehh-sec ehh-soft" id="faq">
   <div class="ehc-wrap">
     <span class="ehh-kick">FAQ</span>
-    <h2>Pertanyaan seputar umroh di Elharamain</h2>
+    <h2>Pertanyaan seputar umroh di Elharamain Wisata</h2>
     <div class="ehh-faq">{"".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)}</div>
   </div>
 </section></div>

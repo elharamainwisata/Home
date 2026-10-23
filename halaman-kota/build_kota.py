@@ -94,7 +94,7 @@ def top(city, o):
     </div>
   </div>
 </section>
-<section class="ehc-stats" aria-label="Sekilas Elharamain">
+<section class="ehc-stats" aria-label="Sekilas Elharamain Wisata">
   <div class="ehc-wrap">
     <div class="ehc-stat"><b>6.800+</b><span>ulasan Google bintang 5</span></div>
     <div class="ehc-stat"><b>6 kantor</b><span>Bekasi, Jakarta, Depok, Tangerang, Bogor, Bandung</span></div>
@@ -115,7 +115,7 @@ def top(city, o):
       </div>
       <div class="ehc-ctas" style="margin-top:0">
         <a class="ehc-btn pri" href="https://www.google.com/maps/search/?api=1&query={mapq(o)}" target="_blank" rel="noopener">Buka di Google Maps</a>
-        <a class="ehc-btn out" href="{wa(o, f"Assalamu'alaikum, saya ingin atur kunjungan ke kantor Elharamain {city}.")}" target="_blank" rel="noopener">Atur kunjungan</a>
+        <a class="ehc-btn out" href="{wa(o, f"Assalamu'alaikum, saya ingin atur kunjungan ke kantor Elharamain Wisata {city}.")}" target="_blank" rel="noopener">Atur kunjungan</a>
       </div>
       <div class="ehc-route"><b>Rute ke bandara:</b> dari {o["short"]} {o["trip"]}, tergantung lalu lintas.</div>
       <p class="ehc-arealbl"><b>Area layanan:</b></p>
@@ -151,7 +151,7 @@ def end(city, o):
      ('Ada paket umroh Syawal 2027?', 'Ada. Umroh Syawal berangkat 8–22 Maret 2027, mulai Rp 37.500.000 per jamaah (Bronze 10 hari, kamar quad). Tersedia juga Silver, Platinum, Silver 12 Hari, dan Gold 12 Hari dengan hotel bintang 5.'),
      (f'Jamaah {city} berangkat dari bandara mana?', f'Dari Bandara Soekarno-Hatta, berkumpul di VIP Lounge Umroh. Dari {o["short"]} {o["trip"]}, tergantung lalu lintas.'),
      ('Bagaimana sistem DP dan pelunasannya?', 'DP Rp 6.000.000 per jamaah, pelunasan paling lambat 35 hari sebelum berangkat. Pembayaran hanya sah ke rekening PT Dhiyaa El Haramain El Mubarakah.'),
-     ('Apakah Elharamain travel umroh resmi?', 'Ya. Izin Umrah SK Kemenag No. 63 Tahun 2020 dan Izin Haji SK No. 846 Tahun 2020, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.'),
+     ('Apakah Elharamain Wisata travel umroh resmi?', 'Ya. Izin Umrah SK Kemenag No. 63 Tahun 2020 dan Izin Haji SK No. 846 Tahun 2020, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.'),
     ]
     det = '\n'.join(f'      <details{" open" if i == 0 else ""}><summary>{q}</summary><p>{a}</p></details>' for i, (q, a) in enumerate(faqs))
     addr = {"@type": "PostalAddress", "streetAddress": o['street'], "addressLocality": o['loc'], "addressRegion": o['reg'], "addressCountry": "ID"}
