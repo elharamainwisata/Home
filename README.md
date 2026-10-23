@@ -49,6 +49,15 @@ Dibuat oleh `python3 halaman-paket/build_beranda.py` → `halaman-paket/halaman/
 - Backup Elementor lama: `backup/2026-10-23_7840_home_elementor_sebelum.json` + `backup/2026-10-23_7840_home_post_content_sebelum.html`.
   Rollback: meta `_elementor_edit_mode` = `builder` pada page 7840.
 
+## Header (template Elementor 8556)
+
+Header situs adalah template UAE `elementor-hf` 8556, isinya satu widget HTML (prefix class `ehh-`).
+- 2026-10-23: dropdown "Paket Umroh" hanya berisi paket tersedia (Musim Dingin, Bronze, Silver, Platinum, Silver 12 Hari, Premium, Syawal 2027).
+  Umroh Plus Aqsa/Mesir/Dubai/Turki dikeluarkan dari menu (halamannya tetap ada). Daftar lama: `backup/2026-10-23_8556_header_menu_paket_sebelum.html`.
+- Edit lewat API: `content-items.update` post_type `elementor-hf`, meta `_elementor_data`. ID elemen sekarang a0ead011/012/013.
+- **Cache elemen Elementor**: setelah update lewat API, HTML lama tetap tampil sampai cache dibersihkan
+  (wp-admin → Elementor → Tools → *Clear Files & Data*, atau buka template di Elementor lalu Update). Meta `_elementor_element_cache` tidak bisa dihapus lewat API.
+
 ## Cara kerja
 
 Sejak 23 Okt 2026 keenam halaman **tidak lagi memakai Elementor**. Isinya blok WordPress (`wp:html`) ditambah
