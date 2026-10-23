@@ -12,7 +12,7 @@ Desain mengacu ke ghufrantravel.com, warna brand `#004AAD` / `#1684CF` / emas `#
 | Depok | 9586 | /travel-umroh-depok/ | 6285179988198 |
 | Tangerang | 9587 | /travel-umroh-tangerang/ | 6285693883208 |
 | Bogor | 9588 | /travel-umroh-bogor/ | 6282260126394 |
-| Bandung | 9589 | /travel-umroh-bandung/ | 628132212344 (11 digit, belum dikonfirmasi) |
+| Bandung | 9589 | /travel-umroh-bandung/ | 628132212344 (11 digit, sudah dikonfirmasi pemilik) |
 
 ## Cara kerja
 

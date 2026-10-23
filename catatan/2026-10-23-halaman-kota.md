@@ -23,6 +23,6 @@ paket Syawal ikut dimasukkan, dirapikan, dan **info paket serta lokasi jangan be
 - `include_fields: ["id"]` di `pages.update` membuat respons kecil (tanpa meta Elementor 180 KB).
 
 ## Menunggu pemilik
-- Konfirmasi nomor WA Bandung 0813-2212-344 (11 digit).
+- ~~Konfirmasi nomor WA Bandung~~: 0813-2212-344 (11 digit) sudah dikonfirmasi benar oleh pemilik.
 - Foto khusus kartu Syawal (sementara memakai foto kartu paket yang ada).
 - Akses tulis ke repo GitHub `elharamainwisata/Home` untuk akun yang dipakai.
