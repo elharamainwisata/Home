@@ -34,3 +34,19 @@ paket Syawal ikut dimasukkan, dirapikan, dan **info paket serta lokasi jangan be
 - Pattern 9999 diperbaiki: urutan latar halaman kota sebelumnya ada dua bagian berurutan berwarna sama.
 - **Temuan penting:** Cloudinary `v6gwkqrb` membalas HTTP 401 `cloud_name v6gwkqrb is disabled` (23 Okt 2026, ±14:20 WIB).
   Semua gambar Cloudinary di situs tidak tampil sampai akun diaktifkan lagi atau gambar dipindah ke Media WordPress.
+
+## Lanjutan: gambar pengganti Cloudinary (23 Okt 2026, sore)
+- Semua gambar Cloudinary di 6 halaman kota + Bronze diganti gambar di Media WordPress (`wp-content/uploads/2026/10/`).
+  Skrip penggantian: `tools/ganti_gambar.py`.
+- **Kartu paket**: foto rombongan asli tanpa teks/harga (gaya ghufrantravel). Diambil dari salinan desain Canva "web"
+  (DAHYz54LrZM, stiker & harga dihapus). Bronze = Ka'bah malam, Silver = Jabal Rahmah, Platinum = Ka'bah ihram,
+  Premium = Masjid Nabawi, Silver 12 Hari/Gold = Masjid Quba.
+- **Hero**: `hero-jamaah-kabah.jpg` (dari foto Platinum).
+- **Perlengkapan**: desain Canva "Perlengkapan" hal. 1 (wanita) & 3 (pria).
+- **Hotel**: kolase 1000x520 `kolase-hotel-*.jpg` (gedung + 2 foto kamar/lobi), atas permintaan pemilik
+  ("ada gambar hotel dan gambar dalamnya"). Foto dari situs resmi: Anjum, Fairmont, Marwa Rotana (Al Marwa Rayhaan),
+  Movenpick Hajar & Anwar Al Madinah. Sisanya dari halaman fasilitas hotel brosur Canva Januari/Desember/Ramadhan.
+  Pembuat kolase: `tools/kolase_hotel.py`.
+- **Belum**: galeri "Momen bersama jamaah" dari Google Drive. Folder DOKUMENTASI hanya berisi video, folder "media" berisi
+  materi iklan, file DSC besar gagal diunduh lewat konektor. Perlu nama folder foto dokumentasi dari pemilik.
+  Galeri saat ini tetap memakai 11 foto lama dari Media WordPress (masih tampil).

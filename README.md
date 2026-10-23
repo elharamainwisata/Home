@@ -62,6 +62,13 @@ Edit `halaman-kota/pattern/9996-paket-harga.html`, lalu ganti isi synced pattern
 Data Elementor lama **tidak dihapus**. Untuk kembali, ubah meta `_elementor_edit_mode` halaman menjadi `builder`
 (atau buka halaman di Elementor lalu Simpan). Backup Bekasi sebelum perubahan: `backup/2026-10-23_9584_bekasi_elementor_sebelum.json`.
 
+## Gambar
+
+Sejak Cloudinary `v6gwkqrb` dinonaktifkan (23 Okt 2026), semua gambar halaman ini ada di Media WordPress
+(`wp-content/uploads/2026/10/`): `foto-paket-*` (kartu paket), `hero-jamaah-kabah`, `perlengkapan-*-2026`,
+`kolase-hotel-*` (slider hotel: gedung + kamar), `fasilitas-bus-1`. Sumber: Canva, Google Drive dan situs resmi hotel.
+Lihat `tools/ganti_gambar.py` dan `tools/kolase_hotel.py`.
+
 ## Alat bantu
 
 - `tools/screenshot.js`: screenshot desktop/HP lewat Chrome (`npm i puppeteer-core`, lalu `node tools/screenshot.js <url> <prefix> <lebar> <1=mobile>`).
