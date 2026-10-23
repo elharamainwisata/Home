@@ -1,0 +1,77 @@
+<div class="ehc"><section class="ehc-sec alt" id="area">
+  <div class="ehc-wrap">
+    <span class="ehc-eyebrow">Area layanan</span>
+    <h2>Melayani jamaah se-Bekasi Raya</h2>
+    <p class="ehc-lead">Dari mana pun Anda di Bekasi, kantor Harapan Indah mudah dijangkau. Konsultasi juga bisa sepenuhnya lewat WhatsApp.</p>
+    <div class="ehc-areas">
+      <span class="ehc-area">Bekasi Barat</span><span class="ehc-area">Bekasi Utara</span><span class="ehc-area">Bekasi Timur</span><span class="ehc-area">Bekasi Selatan</span><span class="ehc-area">Medan Satria</span><span class="ehc-area">Harapan Indah</span><span class="ehc-area">Pondok Gede</span><span class="ehc-area">Jatiasih</span><span class="ehc-area">Tambun</span><span class="ehc-area">Cibitung</span><span class="ehc-area">Cikarang</span>
+    </div>
+  </div>
+</section><section class="ehc-sec" id="legalitas">
+  <div class="ehc-wrap">
+    <span class="ehc-eyebrow">Sebelum Anda membayar</span>
+    <h2>Cek dulu, baru percaya</h2>
+    <div class="ehc-grid3 ehc-trust" style="margin-top:24px">
+      <div class="ehc-card"><h3><i>✓</i>Izin bisa diverifikasi</h3><p>Izin umrah dan haji dari Kemenag tercantum jelas. Cek nomornya di aplikasi resmi Kemenag sebelum mendaftar.</p></div>
+      <div class="ehc-card"><h3><i>Rp</i>Rincian biaya terbuka</h3><p>Yang termasuk dan tidak termasuk harga ditulis lengkap, termasuk syarat perubahan harga.</p></div>
+      <div class="ehc-card"><h3><i>☾</i>Didampingi sampai pulang</h3><p>Manasik di hotel berbintang, pembimbing lulusan Timur Tengah, sampai tiba lagi di tanah air.</p></div>
+    </div>
+    <div class="ehc-legal">
+      <div class="ehc-card">
+        <h3>Legalitas perusahaan</h3>
+        <dl class="ehc-kv">
+          <dt>Perusahaan</dt><dd>PT Dhiyaa El Haramain El Mubarakah</dd>
+          <dt>Izin Umrah</dt><dd>SK Kemenag No. 63 Tahun 2020</dd>
+          <dt>Izin Haji</dt><dd>SK Kemenag No. 846 Tahun 2020</dd>
+          <dt>HIMPUH</dt><dd>No. 131 Tahun 2017</dd>
+          <dt>IATA</dt><dd>15333220</dd>
+          <dt>Akreditasi</dt><dd>A · KAN</dd>
+        </dl>
+      </div>
+      <div class="ehc-warn">
+        <h3>Pembayaran hanya ke rekening perusahaan</h3>
+        <p>Atas nama <b>PT Dhiyaa El Haramain El Mubarakah</b>:<br>Bank Mandiri <b>156.001.150.115.4</b><br>Bank BSI <b>710.857.755.4</b></p>
+        <p style="margin:0">DP Rp 6.000.000 per jamaah, pelunasan paling lambat H-35. Jangan transfer ke rekening pribadi atas nama siapa pun.</p>
+      </div>
+    </div>
+  </div>
+</section><section class="ehc-sec alt" id="cara-daftar">
+  <div class="ehc-wrap">
+    <span class="ehc-eyebrow">Cara daftar dari Bekasi</span>
+    <h2>Empat langkah sampai berangkat</h2>
+    <div class="ehc-steps" style="margin-top:24px">
+      <div class="ehc-step"><h3>Konsultasi gratis</h3><p>Lewat WhatsApp atau datang ke kantor Harapan Indah.</p></div>
+      <div class="ehc-step"><h3>Pilih paket &amp; DP</h3><p>Tentukan paket dan tanggal, lalu DP Rp 6 juta per jamaah.</p></div>
+      <div class="ehc-step"><h3>Lengkapi dokumen</h3><p>Paspor (berlaku min. 10 bulan) dan berkas. Pelunasan paling lambat H-35.</p></div>
+      <div class="ehc-step"><h3>Manasik &amp; berangkat</h3><p>Manasik di hotel berbintang, lalu terbang dari Soekarno-Hatta.</p></div>
+    </div>
+  </div>
+</section></div>
+<!-- WA cabang: semua klik WhatsApp ke nomor pusat di halaman ini dialihkan ke nomor kantor cabang (Bekasi).
+     Termasuk tombol melayang Click to Chat (rotasi nomor dimatikan untuk halaman ini). Tracking GA/Pixel plugin tetap jalan. -->
+<script data-no-optimize="1" data-no-defer="1" data-cfasync="false">
+(function(){
+  var NO='6281287292422', PUSAT='6281287292422';
+  var re=new RegExp('((?:phone=|wa\\.me/)(?:%2B|\\+)?)'+PUSAT,'g');
+  function fixLinks(root){
+    (root||document).querySelectorAll('a[href*="'+PUSAT+'"]').forEach(function(a){
+      if(/whatsapp\.com|wa\.me/.test(a.href)) a.href=a.href.replace(re,'$1'+NO);
+    });
+  }
+  function fixCtc(){
+    var v=window.ht_ctc_chat_var;
+    if(v){v.number=NO;v.r_nums=[NO];delete v.r_sqx;}
+    var d=document.querySelector('.ht_ctc_chat_data');
+    if(d){try{var s=JSON.parse(d.getAttribute('data-settings')||'{}');s.number=NO;s.r_nums=[NO];delete s.r_sqx;d.setAttribute('data-settings',JSON.stringify(s));}catch(e){}}
+  }
+  // Fase capture: jalan sebelum handler plugin, jadi nomor sudah benar saat link dibuka.
+  document.addEventListener('click',function(e){
+    fixCtc();
+    var a=e.target.closest&&e.target.closest('a[href]');
+    if(a&&a.href.indexOf(PUSAT)>-1&&/whatsapp\.com|wa\.me/.test(a.href)) a.href=a.href.replace(re,'$1'+NO);
+  },true);
+  function run(){fixLinks();fixCtc();}
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',run); else run();
+  window.addEventListener('load',run);
+})();
+</script>

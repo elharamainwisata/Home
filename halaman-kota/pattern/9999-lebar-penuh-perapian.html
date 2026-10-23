@@ -1,0 +1,66 @@
+<!-- wp:html -->
+<style>
+/* Lepas batas lebar container tema LandingPress di halaman kota */
+.site-inner:has(.ehc),.site-content:has(.ehc){padding:0!important;margin:0!important;max-width:none!important}
+.site-content .container:has(> .ehc){max-width:none!important;width:100%!important;padding:0!important;margin:0!important}
+body:has(.ehc){overflow-x:clip}
+.ehc .ti-widget{margin-top:8px}
+
+/* Perapian: semua judul bagian rata tengah & konsisten */
+.ehc h2{font-weight:600;letter-spacing:-.01em}
+.ehc-sec .ehc-wrap>.ehc-eyebrow,.ehc-head .ehc-eyebrow{display:block;text-align:center}
+.ehc-sec .ehc-wrap>h2,.ehc-head h2{text-align:center}
+.ehc-sec .ehc-wrap>.ehc-lead{text-align:center;margin-left:auto;margin-right:auto}
+.ehc-head{flex-direction:column;align-items:center;text-align:center;gap:14px}
+.ehc-tabs{text-align:center}
+.ehc-pane{text-align:left}
+.ehc-note{text-align:center}
+.ehc-areas{justify-content:center}
+.ehc-trust h3,.ehc-step h3,.ehc-legal h3{font-weight:600}
+.ehc .ehc-hero-new{color:#fff}
+.ehc .ehc-hero-new:hover{color:var(--gold)}
+.ehc .ehc-city{color:var(--ink)}
+.ehc-next .price{flex-wrap:wrap}
+.ehc-next .price b{white-space:nowrap}
+
+/* Hero satu kolom, area layanan di kartu kantor, legalitas satu kartu */
+.ehc-hero.solo .ehc-wrap{grid-template-columns:1fr;padding-top:64px;padding-bottom:72px}
+.ehc-hero.solo .ehc-wrap>div{max-width:760px}
+.ehc-arealbl{margin:18px 0 8px!important;font-size:.92rem}
+.ehc .ehc-areas-l{justify-content:flex-start;gap:8px;margin-top:0}
+.ehc-areas-l .ehc-area{padding:6px 12px;font-size:.85rem;background:#eef4ff;border-color:#dbe6fb;color:var(--blue)}
+.ehc-legal-1{grid-template-columns:1fr;max-width:720px;margin-left:auto;margin-right:auto}
+
+/* Latar selang-seling putih / abu muda: kantor, layanan, harga, ketentuan, legalitas, fasilitas, testimoni, kantor lain */
+#kantor,.ehc-sec:has(.ehfk),#fasilitas,#ulasan{background:#fff!important}
+.ehc-sec:has(.ehl),#paket-harga,#legalitas,#kantor-lain{background:var(--soft)!important}
+#paket-harga .ehpk .card{box-shadow:0 2px 10px rgba(16,33,61,.05)}
+
+/* Ponsel: lebih ringkas */
+@media (max-width:640px){
+  .ehc-sec{padding:40px 0}
+  .ehc h2{font-size:1.45rem}
+  .ehc-hero .ehc-wrap,.ehc-hero.solo .ehc-wrap{padding-top:32px;padding-bottom:40px;gap:24px}
+  .ehc-map,.ehc-map iframe{min-height:240px}
+  .ehl .ehl-s{margin-bottom:24px}
+  .ehl-g{grid-template-columns:1fr 1fr!important;gap:22px 12px!important}
+  .ehl-i{width:44px;height:44px;border-radius:12px}
+  .ehl-i svg{width:22px;height:22px}
+  .ehl h3{font-size:13.5px}
+  .ehl p{font-size:12.5px}
+  .ehpk .grid{flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -16px;padding:4px 16px 14px}
+  .ehpk .grid::-webkit-scrollbar{display:none}
+  .ehpk .grid>.card{flex:0 0 84%;width:auto!important;scroll-snap-align:center}
+  .ehpk .tabs{margin-bottom:18px}
+  .ehc-steps{grid-template-columns:1fr 1fr!important;gap:10px}
+  .ehc-step{padding:16px}
+  .ehc-step::before{font-size:1.25rem;margin-bottom:4px}
+  .ehc-step h3{font-size:.95rem}
+  .ehc-step p{font-size:.85rem}
+  .ehc-trust .ehc-card{padding:18px}
+  .ehc-row{padding:12px 14px}
+  .ehc-row .ehc-btn{padding:9px 14px}
+  .ehc-doc img:last-child:nth-child(odd){grid-column:span 2;aspect-ratio:2/1}
+}
+</style>
+<!-- /wp:html -->
