@@ -109,11 +109,6 @@ ALUR = [('chat', 'Konsultasi', 'Hubungi tim kami lewat WhatsApp atau kunjungi ka
         ('masjid', 'Beribadah', 'Umroh hingga 3 kali dengan Audio Hajj, dilengkapi tahajjud bersama dan kajian.'),
         ('hati', 'Kembali ke tanah air', 'Jamaah pulang membawa zamzam 5 liter, album foto, sertifikat, dan oleh-oleh.')]
 
-FAQ = [('Apakah Elharamain Wisata travel umroh resmi?', 'Ya. PT Dhiyaa El Haramain El Mubarakah memiliki izin PPIU SK Kemenag No. 63 Tahun 2020 dan PIHK No. 846 Tahun 2020, anggota HIMPUH dan IATA, serta terakreditasi A oleh KAN.'),
-       ('Fasilitas apa saja yang didapat jamaah?', 'Tiket pesawat PP, visa dan asuransi, hotel bintang 5 sesuai paket dengan makan 3x sehari, perlengkapan umroh, manasik, VIP Lounge, bus, pembimbing dan mutawwif, umroh hingga 3x, city tour Thaif, bagasi 35 kg, air zamzam 5 liter, album foto, dan sertifikat.'),
-       ('Biaya apa yang tidak termasuk paket?', 'Pembuatan paspor, suntik meningitis dan polio, keperluan pribadi, kelebihan bagasi, serta penyesuaian biaya bila ada kebijakan baru dari kedua negara.'),
-       ('Berapa uang muka dan batas pelunasannya?', 'DP Rp 6.000.000 per jamaah untuk booking kursi. Pelunasan paling lambat 35 hari sebelum keberangkatan, hanya ke rekening atas nama PT Dhiyaa El Haramain El Mubarakah.'),
-       ('Harga paket berlaku untuk tipe kamar apa?', 'Harga "mulai" berlaku untuk kamar quad (berempat). Harga kamar triple dan double tercantum di setiap paket.')]
 
 hero = f'''<div class="ehc ehh"><section class="ehh-hero">
   <div class="ehc-wrap ehh-hero-in">
@@ -250,14 +245,8 @@ tengah = f'''<div class="ehc ehh"><section class="ehh-sec ehh-dark">
 .ehh-badge{{position:absolute;top:-10px;right:16px;background:var(--gd);color:var(--nv);font:700 11px Poppins,sans-serif;padding:4px 10px;border-radius:999px}}
 </style>'''
 
-akhir = f'''<div class="ehc ehh"><section class="ehh-sec ehh-soft" id="faq">
-  <div class="ehc-wrap">
-    <span class="ehh-kick">FAQ</span>
-    <h2>Pertanyaan seputar umroh di Elharamain Wisata</h2>
-    <div class="ehh-faq">{"".join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ)}</div>
-  </div>
-</section></div>
-<style>
+# FAQ sengaja tidak ada di home (permintaan pemilik)
+akhir = f'''<style>
 .ehh{{--nv:#10213d;--bl:#004AAD;--bl2:#1684CF;--gd:#DBC033;--ln:#e3e9f3;--mu:#55627a;--soft:#f4f7fc}}
 .ehh .ehh-sec{{padding:72px 0;background:#fff}}
 .ehh .ehh-soft{{background:var(--soft)}}
@@ -346,15 +335,10 @@ akhir = f'''<div class="ehc ehh"><section class="ehh-sec ehh-soft" id="faq">
 .ehh-ust figure{{margin:0;background:#fff;border:1px solid var(--ln);border-radius:14px;overflow:hidden;text-align:center}}
 .ehh-ust img{{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}}
 .ehh-ust figcaption{{padding:12px 10px;font:600 14px Poppins,sans-serif;color:var(--nv)}}
-.ehh-faq{{max-width:820px}}
-.ehh-faq details{{background:#fff;border:1px solid var(--ln);border-radius:12px;padding:0 18px;margin-bottom:10px}}
-.ehh-faq summary{{cursor:pointer;font:600 15px Poppins,sans-serif;padding:15px 0;color:var(--nv)}}
-.ehh-faq p{{margin:0 0 15px;color:var(--mu);font-size:14.5px}}
 @media (max-width:1060px){{.ehh-tiers{{grid-template-columns:repeat(3,1fr)}}.ehh-g4{{grid-template-columns:repeat(2,1fr)}}}}
 @media (max-width:900px){{.ehh-hero-in{{flex-direction:column;align-items:stretch}}.ehh-next{{width:auto}}.ehh-stat{{grid-template-columns:repeat(2,1fr)}}.ehh-stat div:nth-child(2){{border-right:0}}.ehh-stat div:nth-child(-n+2){{border-bottom:1px solid rgba(255,255,255,.22)}}.ehh-g3,.ehh-legal{{grid-template-columns:1fr 1fr}}.ehh-ust{{grid-template-columns:repeat(2,1fr)}}}}
 @media (max-width:640px){{.ehh .ehh-sec{{padding:52px 0}}.ehh-hero{{padding:48px 0 32px}}.ehh-g4,.ehh-g3,.ehh-legal,.ehh-tiers{{grid-template-columns:1fr}}.ehh-jr{{flex-wrap:wrap}}.ehh-jr .ehh-btn{{width:100%}}.ehh-mos{{grid-template-columns:1fr 1fr;grid-auto-rows:140px}}.ehh-mos .big{{grid-column:span 2;grid-row:span 1;height:220px}}.ehh-hero .ehc-ctas .ehh-btn{{width:100%}}}}
-</style>
-<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]}, ensure_ascii=False)}</script>'''
+</style>'''
 
 assert '&&' not in hero + tengah + akhir
 page = '\n\n'.join([ref('gaya'), ref('lebar'), ref('paket'), blk(hero), blk(tengah), ref('testimoni'), blk(akhir)])
