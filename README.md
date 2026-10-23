@@ -37,6 +37,17 @@ Semua halaman dibuat oleh `python3 halaman-paket/build_paket.py`, yang menulis `
 - **Backup sebelum diganti** ada di `backup/2026-10-23_<id>_*`. Rollback Elementor: `_elementor_edit_mode` = `builder`.
   Syawal (9935) dulunya blok khusus (itinerary, FAQ): `backup/2026-10-23_9935_syawal_rendered_sebelum.html` + revisi WordPress.
 
+## Beranda (page 7840)
+
+Dibuat oleh `python3 halaman-paket/build_beranda.py` → `halaman-paket/halaman/beranda-baru.html`, dipasang ke page 7840
+(slug `elharamain-wisata`, halaman depan) pada 2026-10-23 atas permintaan pemilik. Halaman uji 10088 (/beranda-baru/) sekarang draft.
+
+- Isi: pattern 9991, 9999, 10076 + blok hero/jadwal/legalitas/kelas, blok kenapa/dokumentasi/program (tab Umroh & Haji Plus)/pembimbing/alur, testimoni 9994, blok CSS.
+- Jadwal & harga kelas diambil dari kartu Musim Dingin (pattern 9996); program hanya paket di brosur PDF; Haji Plus dari /haji/.
+- Ubah beranda hanya bila pemilik memintanya secara eksplisit.
+- Backup Elementor lama: `backup/2026-10-23_7840_home_elementor_sebelum.json` + `backup/2026-10-23_7840_home_post_content_sebelum.html`.
+  Rollback: meta `_elementor_edit_mode` = `builder` pada page 7840.
+
 ## Cara kerja
 
 Sejak 23 Okt 2026 keenam halaman **tidak lagi memakai Elementor**. Isinya blok WordPress (`wp:html`) ditambah
